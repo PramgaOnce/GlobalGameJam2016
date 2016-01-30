@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum TouchButton : int
+namespace Steamroller
 {
-    Left,
-    Right,
-    Pause,
+    public enum TouchButton : int
+    {
+        Left,
+        Right,
+        Pause,
 
-    Horizontal,
-    Vertical,
-    Confirm,
-    Cancel,
+        Horizontal,
+        Vertical,
+        Confirm,
+        Cancel,
+    }
 }
