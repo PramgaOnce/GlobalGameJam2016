@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 480200}
   - 114: {fileID: 11431412}
+  - 114: {fileID: 11407556}
   - 114: {fileID: 11471656}
   - 114: {fileID: 11494784}
   m_Layer: 0
@@ -30,6 +31,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11407556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 160064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8704b5a91f2daea4c8a530e303835c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerId: 0
 --- !u!114 &11431412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -735,6 +748,7 @@ MonoBehaviour:
     width: 0.5
     height: 1
   button: 0
+  camera: {fileID: 0}
 --- !u!114 &11494784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -754,6 +768,7 @@ MonoBehaviour:
     width: 0.5
     height: 1
   button: 1
+  camera: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
