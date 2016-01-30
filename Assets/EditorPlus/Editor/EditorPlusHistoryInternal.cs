@@ -44,7 +44,7 @@ namespace EditorPlus
         {
             currentID = EditorPrefs.GetInt("EditorPlusHistory.curID", 0);
 
-            level = Application.loadedLevelName;
+            level = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
 
             projectObjectsSave = new EditorPlusHistoryProjectObjects();
             HandleSceneSaveObject();
@@ -434,7 +434,7 @@ namespace EditorPlus
         public static void Update()
         {
             
-            if (level != Application.loadedLevelName || sceneObjectsSave == null || sceneObjWaitingForSerializer)
+            if (level != UnityEngine.SceneManagement.SceneManager.GetActiveScene().name || sceneObjectsSave == null || sceneObjWaitingForSerializer)
             {
                 HandleSceneSaveObject();
             }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Rewired;
 
 public class TouchInput : MonoBehaviour
@@ -13,7 +12,7 @@ public class TouchInput : MonoBehaviour
     public static string controllerTag = "Touch";
     private CustomController controller;
 
-    private Camera camera;
+    public new Camera camera;
 
     private Touch touch;
     private Vector2 viewportPoint;
