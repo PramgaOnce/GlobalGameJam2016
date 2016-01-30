@@ -94,7 +94,9 @@ MonoBehaviour:
       - _enabled: 1
         _categoryId: 0
         _layoutId: 0
-      _startingCustomControllers: []
+      _startingCustomControllers:
+      - _sourceId: 0
+        _tag: Touch
       _assignMouseOnStart: 1
       _excludeFromControllerAutoAssignment: 0
     - _id: 2
