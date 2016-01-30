@@ -7,10 +7,8 @@ using Steamroller.Objects;
 namespace Steamroller.Obstacles 
 {
     [RequireComponent(typeof(CircleCollider2D))]
-    public class GravityWellPull : IOribitable 
+    public class GravityWellPull : Oribitable 
     {
-
-
         private CircleCollider2D col;
         public float rotationSpeed;
         public float speedModifier;

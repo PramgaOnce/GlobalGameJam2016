@@ -60,8 +60,6 @@ namespace Steamroller
                 {
                     // Set the value on the controller
                     controller.SetButtonValue( (int)button, true );
-
-                    Debug.Log( "Touched: " + button );
                     return;
                 }
             }
@@ -76,8 +74,6 @@ namespace Steamroller
                 {
                     // Set the value on the controller
                     controller.SetButtonValue( (int)button, true );
-
-                    Debug.Log( "Touched: " + button );
                     return;
                 }
             }
