@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Steamroller.Objects;
+using Steamroller.Extensions;
 
 namespace Steamroller.Characters
 {   
     public class GenericMovement : CachedMonoBehaviour
     {
+        public bool debug;
+
         public float speed;
 
         public Vector3 selfPoint;
@@ -18,12 +20,16 @@ namespace Steamroller.Characters
         public bool orbiting = false;
         public bool orbit = false;
 
+        private float orbitAngle;
+
         public Oribitable orbitable;
 
         public Vector3 orbitablePoint;
         public Vector3 orbitableVector;
         public float orbitableDistance;
         public float orbitableAngle;
+
+        private Vector3 position;
         
         protected override void Start()
         {
@@ -38,28 +44,25 @@ namespace Steamroller.Characters
 
             HandleInput();
 
-            if ( orbitable )
+            if ( orbitable && orbit && !orbiting )
             {
-                if ( orbiting )
+                float _distanceToOrbit = ( orbitPoint - transform.position ).sqrMagnitude;
+                if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
                 {
-                    transform.RotateAround(orbitable.transform.position, Vector3.forward, orbitSide * (1.0f / orbitRadius) * speed * 120.0f * Time.deltaTime);
-                    return;
-                }
-                else
-                {
-                    if ( orbit )
-                    {
-                        float _distanceToOrbit = (orbitPoint - transform.position).sqrMagnitude;
-                        if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
-                        {
-                            orbiting = true;
-                            return;
-                        }
-                    }
+                    orbiting = true;
                 }
             }
             
-            transform.Translate(Vector3.up * speed * Time.deltaTime, Space.Self);
+            if ( orbiting )
+            {
+                orbitAngle = ( ( speed * Time.deltaTime ) / ( 2 * orbitRadius * Mathf.PI ) ) * orbitSide * 360.0f;
+                transform.RotateAround( orbitable.transform.position, Vector3.forward, orbitAngle );
+            }
+            else
+            {
+                // Simply move forward
+                transform.Translate( Vector3.up * speed * Time.deltaTime, Space.Self );
+            }
         }
 
         private void HandleInput()
@@ -140,6 +143,11 @@ namespace Steamroller.Characters
       
         protected void OnDrawGizmos()
         {
+            if ( !debug )
+            {
+                return;
+            }
+
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, transform.up);
 
