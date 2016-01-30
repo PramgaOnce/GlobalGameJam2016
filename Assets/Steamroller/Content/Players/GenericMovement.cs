@@ -10,9 +10,13 @@ namespace Steamroller.Characters
     {
         //we dont want to control direction of the force
         public float speed;
-        private bool MoveNormaly;
+        public float IntersectionThreshold;
+        private bool Orbiting = false;
         private IOribitable Interactable;
+        Vector3 intersectionPoint;
 
+        
+         
         void Awake()
         {
             
@@ -27,7 +31,25 @@ namespace Steamroller.Characters
         
         void Update()
         {
-          
+            HandleInput();
+
+            if (Interactable)
+            {
+                if ( Orbiting)
+                {
+                    transform.RotateAround(Interactable.transform.position, Vector3.forward, 15.0f * Time.deltaTime);
+                    return;
+                }
+                else
+                {
+                    float _distToIntersection = (intersectionPoint - transform.position).sqrMagnitude;
+                    if (IntersectionThreshold * IntersectionThreshold > _distToIntersection)
+                    {
+                        Orbiting = true;
+                    }
+                } 
+            }
+            
 
             float _speedStep = speed * Time.deltaTime;
             transform.Translate(new Vector3(0.0f, _speedStep, 0.0f), Space.Self);
@@ -54,38 +76,57 @@ namespace Steamroller.Characters
 
                 if (Interactable == null)
                 {
+                    Orbiting = false;
                     return;
                 }
 
+                //grab the vector from the orbitable to me
+                Vector3 targetToPlayer = Interactable.transform.position - transform.position;
+                //get the distance
+                float dist = targetToPlayer.magnitude;
 
+                //get the angle between the two
+                float angle = Vector3.Angle(targetToPlayer, transform.up);
+
+
+                float orbit = Mathf.Sin(angle) * dist;
+                Debug.Log(orbit);
+
+                float distFromPlayer = Mathf.Sqrt((orbit * orbit) - (dist * dist));
+
+
+                Vector3 _up = transform.up;
+                intersectionPoint = transform.TransformPoint(_up * distFromPlayer);
 
             }
             else if (InputManager.GetState(ActionType.Orbit))
             {
+               
 
-                Vector3 targetToPlayer = Interactable.transform.position - transform.position;
-                float dist = targetToPlayer.magnitude;
-
-
-                float angle = Vector3.Angle(transform.up, targetToPlayer);
-
-
-                float orbit = Mathf.Sin(angle) * dist;
-
-
-                float distFromPlayer = Mathf.Sqrt((orbit * orbit) - (dist * dist));
-
-                Vector3 intersectionPoint;
-
-                intersectionPoint = transform.TransformPoint(transform.up * distFromPlayer);
-
-
+              
 
             }
             else if (InputManager.GetReleased(ActionType.Orbit))
             {
                 Interactable = null;
+                Orbiting = false;
             }
         }
+
+      
+            void OnDrawGizmos()
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(intersectionPoint,.10f);
+                if (Interactable)
+	            {
+	            	 Gizmos.DrawLine(Interactable.transform.position,transform.position);
+                     Gizmos.DrawLine(transform.position, intersectionPoint);
+                     Gizmos.DrawRay(transform.position, transform.up);
+	            }
+                
+
+
+            }
     } 
 }

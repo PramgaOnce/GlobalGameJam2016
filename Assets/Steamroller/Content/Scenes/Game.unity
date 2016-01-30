@@ -94,11 +94,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.62
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalPosition.z
@@ -123,6 +123,14 @@ Prefab:
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875872, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
+      propertyPath: m_Radius
+      value: 2.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875872, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
@@ -441,7 +449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!58 &990892122
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -451,7 +459,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -467,7 +475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f66cf4944dc1f48b90454129d3b13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
+  IntersectionThreshold: 0.1
 --- !u!23 &990892124
 MeshRenderer:
   m_ObjectHideFlags: 0
