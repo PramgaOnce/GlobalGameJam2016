@@ -4,5 +4,11 @@ using System.Collections;
 public enum TouchButton : int
 {
     Left,
-    Right
+    Right,
+    Pause,
+
+    Horizontal,
+    Vertical,
+    Confirm,
+    Cancel,
 }
