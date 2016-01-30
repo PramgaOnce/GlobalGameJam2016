@@ -79,16 +79,19 @@ namespace Steamroller.Characters
 
         private void FindOrbitable()
         {
-            if ( orbiting )
+            if ( orbitable )
             {
-                return;
+                if ( orbiting || orbit )
+                {
+                    return;
+                }
             }
 
             selfPoint = transform.position;
 
             orbitable = null;
 
-            float _closestDist = float.MaxValue;
+            float _closestDistance = float.MaxValue;
             foreach ( var _oribitable in GameObject.FindObjectsOfType<Oribitable>() )
             {
                 var _distance = _oribitable.transform.position - selfPoint;
@@ -99,10 +102,10 @@ namespace Steamroller.Characters
                     continue;
                 }
 
-                if ( _distance.sqrMagnitude < _closestDist )
+                if ( _distance.sqrMagnitude < _closestDistance )
                 {
                     orbitable = _oribitable;
-                    _closestDist = _distance.sqrMagnitude;
+                    _closestDistance = _distance.sqrMagnitude;
                 }
             }
         }
