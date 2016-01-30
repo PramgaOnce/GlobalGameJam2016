@@ -18,12 +18,41 @@ namespace Steamroller.Characters
         public bool orbiting = false;
         public bool orbit = false;
 
-        public Oribitable orbitable;
+        
+        private Oribitable _orbitable;
+        public float pulseRate;
+
+        public Oribitable orbitable
+        {
+            get
+            {
+                return _orbitable;
+            }
+            set
+            {
+                if (_orbitable)
+                {
+                    MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
+                    renderer.material.SetFloat("PulseSpeed", 0.0f);
+                }
+                _orbitable = value;
+
+                if (_orbitable)
+                {
+                    MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
+                    renderer.material.SetFloat("PulseSpeed", 0.0f);
+                }
+
+            }
+        }
 
         public Vector3 orbitablePoint;
         public Vector3 orbitableVector;
         public float orbitableDistance;
         public float orbitableAngle;
+
+
+        public Color targetColor;
         
         protected override void Start()
         {

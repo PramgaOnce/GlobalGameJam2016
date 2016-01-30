@@ -49,9 +49,7 @@ Shader "Shader Forge/Ring_01" {
             }
             float4 frag(VertexOutput i) : COLOR {
                 float4 node_1357 = _Time + _TimeEditor;
-                float3 node_8270 = lerp(float3(0.08931659,0.8676471,0.8676471),float3(0,0.9926471,0.3354464),(sin((_PulseSpeed*node_1357.g))*0.5+0.5));
-                float3 node_577 = (_ColorIntensity*node_8270);
-                return fixed4((sin(node_577)*2.0),0);
+                return fixed4((sin((_ColorIntensity*lerp(float3(0.08931659,0.8676471,0.8676471),float3(0,0.9926471,0.3354464),(sin((_PulseSpeed*node_1357.g))*0.5+0.5))))*2.0),0);
             }
             ENDCG
         }
@@ -89,8 +87,8 @@ Shader "Shader Forge/Ring_01" {
             float4 frag(VertexOutput i) : COLOR {
 ////// Lighting:
 ////// Emissive:
-                float4 node_5175 = _Time + _TimeEditor;
-                float2 node_3400 = (i.uv0+node_5175.g*float2(0.1,0));
+                float4 node_7543 = _Time + _TimeEditor;
+                float2 node_3400 = (i.uv0+node_7543.g*float2(0.1,0));
                 float4 _Ray_copy_var = tex2D(_Ray_copy,TRANSFORM_TEX(node_3400, _Ray_copy));
                 float3 emissive = float3(_Ray_copy_var.g,_Ray_copy_var.g,_Ray_copy_var.g);
                 float3 finalColor = emissive;

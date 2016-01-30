@@ -69,8 +69,8 @@ Shader "Shader Forge/Rotator" {
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
                 float3 indirectDiffuse = float3(0,0,0);
                 indirectDiffuse += UNITY_LIGHTMODEL_AMBIENT.rgb; // Ambient Light
-                float4 node_4354 = _Time + _TimeEditor;
-                float2 node_4176 = (i.uv0+node_4354.g*float2(0.1,0));
+                float4 node_5674 = _Time + _TimeEditor;
+                float2 node_4176 = (i.uv0+node_5674.g*float2(0.1,0));
                 float4 _DifuseTexture_var = tex2D(_DifuseTexture,TRANSFORM_TEX(node_4176, _DifuseTexture));
                 float3 diffuseColor = _DifuseTexture_var.rgb;
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
@@ -138,8 +138,8 @@ Shader "Shader Forge/Rotator" {
 /////// Diffuse:
                 float NdotL = max(0.0,dot( normalDirection, lightDirection ));
                 float3 directDiffuse = max( 0.0, NdotL) * attenColor;
-                float4 node_1636 = _Time + _TimeEditor;
-                float2 node_4176 = (i.uv0+node_1636.g*float2(0.1,0));
+                float4 node_9346 = _Time + _TimeEditor;
+                float2 node_4176 = (i.uv0+node_9346.g*float2(0.1,0));
                 float4 _DifuseTexture_var = tex2D(_DifuseTexture,TRANSFORM_TEX(node_4176, _DifuseTexture));
                 float3 diffuseColor = _DifuseTexture_var.rgb;
                 float3 diffuse = directDiffuse * diffuseColor;
