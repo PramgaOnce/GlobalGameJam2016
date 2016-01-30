@@ -11,17 +11,15 @@ namespace Steamroller.Characters
         //we dont want to control direction of the force
         public float speed;
         private bool MoveNormaly;
-        private IOribitable Interactable;
+        private Oribitable Interactable;
 
         void Awake()
         {
-            
         }
 
         
         void Start()
-        {
-           
+        {  
         }
 
         
@@ -47,7 +45,7 @@ namespace Steamroller.Characters
 
                     if (_dist.sqrMagnitude < closestDist)
                     {
-                        Interactable = item.GetComponent<IOribitable>();
+                        Interactable = item.GetComponent<Oribitable>();
                         closestDist = _dist.sqrMagnitude;
                     }
                 }
