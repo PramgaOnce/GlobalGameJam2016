@@ -28,6 +28,8 @@ public class TouchInput : MonoBehaviour
     {
         Debug.Log("InputManager.Initialize()");
 
+        camera = camera != null ? camera : Camera.main;
+
         player = ReInput.players.GetPlayer( playerId );
 
         controller = player.controllers.GetControllerWithTag<CustomController>( controllerTag );
@@ -43,6 +45,7 @@ public class TouchInput : MonoBehaviour
     private void OnInputSourceUpdate()
     {
         //Debug.Log( "InputManager.OnInputSourceUpdate()" );
+
         for( var _index = 0; _index < ReInput.touch.touchCount; _index++ )
         {
             // Get the Touch
@@ -65,7 +68,7 @@ public class TouchInput : MonoBehaviour
         // If the mouse is down then process the mouse
         if ( ReInput.controllers.Mouse.GetButtonDown( 0 ) )
         {
-            viewportPoint = ReInput.controllers.Mouse.screenPosition;
+            viewportPoint = camera.ScreenToViewportPoint( ReInput.controllers.Mouse.screenPosition );
 
             // See if the rect contains the point
             if ( rect.Contains( viewportPoint ) )
