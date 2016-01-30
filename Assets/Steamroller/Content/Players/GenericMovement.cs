@@ -6,12 +6,10 @@ namespace Steamroller.Characters
 {   
     public class GenericMovement : CachedMonoBehaviour
     {
-        //we dont want to control direction of the force
         public float speed;
 
         public Vector3 selfPoint;
-
-        public float orbitSpeed = 1.0f;
+        
         public float orbitRadius;
         public Vector3 orbitPoint;
         public float orbitDistance;
@@ -44,7 +42,7 @@ namespace Steamroller.Characters
             {
                 if ( orbiting )
                 {
-                    transform.RotateAround(orbitable.transform.position, Vector3.forward, orbitSide * (1.0f / orbitRadius) * orbitSpeed * Time.deltaTime);
+                    transform.RotateAround(orbitable.transform.position, Vector3.forward, orbitSide * (1.0f / orbitRadius) * speed * 120.0f * Time.deltaTime);
                     return;
                 }
                 else
