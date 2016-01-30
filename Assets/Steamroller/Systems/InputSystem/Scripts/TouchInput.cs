@@ -1,90 +1,93 @@
 ﻿using UnityEngine;
 using Rewired;
 
-public class TouchInput : MonoBehaviour
+namespace Steamroller
 {
-    public int playerId = 0;
-    private Player player;
-
-    public Rect rect;
-    public TouchButton button;
-
-    public static string controllerTag = "Touch";
-    private CustomController controller;
-
-    public new Camera camera;
-
-    private Touch touch;
-    private Vector2 viewportPoint;
-    private bool buttonValue;
-
-    public void Awake()
+    public class TouchInput : MonoBehaviour
     {
-        Initialize();
-    }
+        public int playerId = 0;
+        private Player player;
 
-    public void Initialize()
-    {
-        Debug.Log("InputManager.Initialize()");
+        public Rect rect;
+        public TouchButton button;
 
-        camera = camera != null ? camera : Camera.main;
+        public static string controllerTag = "Touch";
+        private CustomController controller;
 
-        player = ReInput.players.GetPlayer( playerId );
+        public new Camera camera;
 
-        controller = player.controllers.GetControllerWithTag<CustomController>( controllerTag );
-        if ( controller == null )
+        private Touch touch;
+        private Vector2 viewportPoint;
+        private bool buttonValue;
+
+        public void Awake()
         {
-            Debug.LogError( "No controller found with tag: " + controllerTag );
-            return;
+            Initialize();
         }
 
-        ReInput.InputSourceUpdateEvent += OnInputSourceUpdate;
-    }
-
-    private void OnInputSourceUpdate()
-    {
-        //Debug.Log( "InputManager.OnInputSourceUpdate()" );
-
-        for( var _index = 0; _index < ReInput.touch.touchCount; _index++ )
+        public void Initialize()
         {
-            // Get the Touch
-            touch = ReInput.touch.GetTouch( _index );
+            Debug.Log("InputManager.Initialize()");
 
-            // Translate touch positoin(pixels) to screen position(0, 1)
-            viewportPoint = camera.ScreenToViewportPoint( touch.position );
+            camera = camera != null ? camera : Camera.main;
 
-            // See if the rect contains the point
-            if ( rect.Contains( viewportPoint ) )
+            player = ReInput.players.GetPlayer( playerId );
+
+            controller = player.controllers.GetControllerWithTag<CustomController>( controllerTag );
+            if ( controller == null )
             {
-                // Set the value on the controller
-                controller.SetButtonValue( (int)button, true );
-
-                Debug.Log( "Touched: " + button );
+                Debug.LogError( "No controller found with tag: " + controllerTag );
                 return;
             }
+
+            ReInput.InputSourceUpdateEvent += OnInputSourceUpdate;
         }
 
-        // If the mouse is down then process the mouse
-        if ( ReInput.controllers.Mouse.GetButtonDown( 0 ) )
+        private void OnInputSourceUpdate()
         {
-            viewportPoint = camera.ScreenToViewportPoint( ReInput.controllers.Mouse.screenPosition );
+            //Debug.Log( "InputManager.OnInputSourceUpdate()" );
 
-            // See if the rect contains the point
-            if ( rect.Contains( viewportPoint ) )
+            for( var _index = 0; _index < ReInput.touch.touchCount; _index++ )
             {
-                // Set the value on the controller
-                controller.SetButtonValue( (int)button, true );
+                // Get the Touch
+                touch = ReInput.touch.GetTouch( _index );
 
-                Debug.Log( "Touched: " + button );
-                return;
+                // Translate touch positoin(pixels) to screen position(0, 1)
+                viewportPoint = camera.ScreenToViewportPoint( touch.position );
+
+                // See if the rect contains the point
+                if ( rect.Contains( viewportPoint ) )
+                {
+                    // Set the value on the controller
+                    controller.SetButtonValue( (int)button, true );
+
+                    Debug.Log( "Touched: " + button );
+                    return;
+                }
             }
-        }
+
+            // If the mouse is down then process the mouse
+            if ( ReInput.controllers.Mouse.GetButtonDown( 0 ) )
+            {
+                viewportPoint = camera.ScreenToViewportPoint( ReInput.controllers.Mouse.screenPosition );
+
+                // See if the rect contains the point
+                if ( rect.Contains( viewportPoint ) )
+                {
+                    // Set the value on the controller
+                    controller.SetButtonValue( (int)button, true );
+
+                    Debug.Log( "Touched: " + button );
+                    return;
+                }
+            }
         
-        controller.SetButtonValue( (int)button, false );
-    }
+            controller.SetButtonValue( (int)button, false );
+        }
 
-    private void OnGui()
-    {
+        private void OnGui()
+        {
 
+        }
     }
 }

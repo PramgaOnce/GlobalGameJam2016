@@ -1,6 +1,9 @@
-﻿public enum ActionType : int
+﻿namespace Steamroller
 {
-    Orbit,
-    Dive,
-    Last
+    public enum ActionType : int
+    {
+        Orbit,
+        Dive,
+        Last
+    }
 }
