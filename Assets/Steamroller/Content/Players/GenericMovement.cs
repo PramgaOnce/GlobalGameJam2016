@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Steamroller.Objects;
 
 namespace Steamroller.Characters
 {   
     public class GenericMovement : CachedMonoBehaviour
     {
+        public bool debug;
+
         public float speed;
 
         public Vector3 selfPoint;
@@ -17,10 +18,21 @@ namespace Steamroller.Characters
         public float orbitSide = 1.0f;
         public bool orbiting = false;
         public bool orbit = false;
-
-        
+        private float orbitAngle;
         private Oribitable _orbitable;
-        public float pulseRate;
+
+        public Vector3 orbitablePoint;
+        public Vector3 orbitableVector;
+        public float orbitableDistance;
+        public float orbitableAngle;
+        private Vector3 position;
+        public float pulseValue;
+        public Color color1;
+        public Color color2;
+
+
+        public Color defaultColor1;
+        public Color defaultColor2;
 
         public Oribitable orbitable
         {
@@ -32,33 +44,40 @@ namespace Steamroller.Characters
             {
                 if (_orbitable)
                 {
-                    MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
-                    renderer.material.SetFloat("PulseSpeed", 0.0f);
+                    MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
+                    mesh_renderer.material.SetFloat("_PulseSpeed", 0.0f);
+                    mesh_renderer.material.SetColor("_Color1", defaultColor1);
+                    mesh_renderer.material.SetColor("_Color2", defaultColor2);
+
                 }
+
                 _orbitable = value;
 
                 if (_orbitable)
                 {
-                    MeshRenderer renderer = GetComponentInChildren<MeshRenderer>();
-                    renderer.material.SetFloat("PulseSpeed", 0.0f);
+                    MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
+                     mesh_renderer.material.SetColor("_Color1",color1);
+                     mesh_renderer.material.SetColor("_Color2", color2);
+
+                  
+
+                    mesh_renderer.material.SetFloat("_PulseSpeed", pulseValue);
+                  
+                  
                 }
 
             }
         }
 
-        public Vector3 orbitablePoint;
-        public Vector3 orbitableVector;
-        public float orbitableDistance;
-        public float orbitableAngle;
-
-
-        public Color targetColor;
         
+
         protected override void Start()
         {
             orbit = true;
             FindOrbitable();
             FindOrbitPoint();
+
+           
         }
 
         protected override void Update()
@@ -67,28 +86,25 @@ namespace Steamroller.Characters
 
             HandleInput();
 
-            if ( orbitable )
+            if ( orbitable && orbit && !orbiting )
             {
-                if ( orbiting )
+                float _distanceToOrbit = ( orbitPoint - transform.position ).sqrMagnitude;
+                if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
                 {
-                    transform.RotateAround(orbitable.transform.position, Vector3.forward, orbitSide * (1.0f / orbitRadius) * speed * 120.0f * Time.deltaTime);
-                    return;
-                }
-                else
-                {
-                    if ( orbit )
-                    {
-                        float _distanceToOrbit = (orbitPoint - transform.position).sqrMagnitude;
-                        if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
-                        {
-                            orbiting = true;
-                            return;
-                        }
-                    }
+                    orbiting = true;
                 }
             }
             
-            transform.Translate(Vector3.up * speed * Time.deltaTime, Space.Self);
+            if ( orbiting )
+            {
+                orbitAngle = ( ( speed * Time.deltaTime ) / ( 2 * orbitRadius * Mathf.PI ) ) * orbitSide * 360.0f;
+                transform.RotateAround( orbitable.transform.position, Vector3.forward, orbitAngle );
+            }
+            else
+            {
+                // Simply move forward
+                transform.Translate( Vector3.up * speed * Time.deltaTime, Space.Self );
+            }
         }
 
         private void HandleInput()
@@ -169,6 +185,11 @@ namespace Steamroller.Characters
       
         protected void OnDrawGizmos()
         {
+            if ( !debug )
+            {
+                return;
+            }
+
             Gizmos.color = Color.red;
             Gizmos.DrawRay(transform.position, transform.up);
 
