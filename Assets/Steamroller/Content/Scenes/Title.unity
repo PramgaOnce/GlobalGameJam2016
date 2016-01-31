@@ -260,10 +260,10 @@ Prefab:
     - target: {fileID: 2300002, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a50b4aa2c5aeb1d488093fefc20b85c3, type: 2}
+      objectReference: {fileID: 2100000, guid: b25149b3a7a822642a7291820a8cb373, type: 2}
     - target: {fileID: 400002, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.021
+      value: 0.0199
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -271,7 +271,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0107
+      value: 0.0071
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -281,9 +281,17 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6482b5e0385c2e94889d627f07adce79, type: 2}
+    - target: {fileID: 2300006, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c5fe90076ba7be4289def7c8053b133, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &650889807 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
+  m_PrefabInternal: {fileID: 650889806}
 --- !u!1 &698428971 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 142712, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
@@ -889,7 +897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClearID: 0
-  IDs: 7005000078050000790500007a0500007b0500007c0500007d0500007e05000084050000850500008705000088050000890500008a0500008b0500008c050000a6050000
+  IDs: 7005000078050000790500007a0500007b0500007c0500007d0500007e05000084050000850500008705000088050000890500008a0500008b0500008c050000a6050000fc050000
   OBJs:
   - {fileID: 1782137356}
   - {fileID: 403991245}
@@ -908,6 +916,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 1248642717}
   - {fileID: 412999620}
+  - {fileID: 650889807}
 --- !u!4 &1925339233
 Transform:
   m_ObjectHideFlags: 1
