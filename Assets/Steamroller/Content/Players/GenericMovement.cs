@@ -57,7 +57,24 @@ namespace Steamroller
         [HideInInspector]
         private float orbitAngle;
         public float orbitTotal;
-        public int orbits;
+        private int _orbits;
+
+        public int orbits
+        {
+            get
+            {
+                return _orbits;
+            }
+            set
+            {
+                if (value != _orbits)
+                {
+                    //GameManager.instance.CompletedRotation();
+                }
+
+                _orbits = value;
+            }
+        }
 
         [HideInInspector]
         public Vector3 orbitablePoint;

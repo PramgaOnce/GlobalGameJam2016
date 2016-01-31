@@ -24,7 +24,8 @@ namespace Steamroller
 
         public Color DefaultColor1;
         public Color DefaultColor2;
-        
+
+        int simonIndex = 0;
 
         protected override void Awake()
         {
@@ -94,16 +95,29 @@ namespace Steamroller
             base.LateUpdate();
         }
         
-        public void CompletedRotation()
+        public void CompletedRotation(Player player,Oribitable orbitable)
         {
+            if (orbitable != simonList[simonIndex])
+            {
+                return;
+            }
+            simonIndex++;
+
+            if (simonIndex == simonList.Count)
+            {
+                FinishedSet();
+            }
+
 
         }
         
         //when we have compelted the current setup we should 
         public void FinishedSet()
         {
-            Oribitable _toAdd;
+            simonIndex = 0;
 
+            Oribitable _toAdd;
+            
             //while your rand is returning the same as the last one find the next one
             do
             {
@@ -143,7 +157,6 @@ namespace Steamroller
                  //change The colors on the orbitable
                 foreach (var item in _orbitable.GetComponentsInChildren<MeshRenderer>())
                 {
-                    
                     item.material.SetColor("_Color1",displayColor1);
                     item.material.SetColor("_Color2",displayColor2);
                     item.material.SetFloat("_PulseSpeed", pulseValue);
