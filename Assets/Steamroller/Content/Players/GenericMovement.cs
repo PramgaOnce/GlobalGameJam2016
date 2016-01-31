@@ -53,10 +53,11 @@ namespace Steamroller
                 }
             }
         }
-
+        
         [HideInInspector]
         private float orbitAngle;
-        private Oribitable _orbitable;
+        public float orbitTotal;
+        public int orbits;
 
         [HideInInspector]
         public Vector3 orbitablePoint;
@@ -74,6 +75,7 @@ namespace Steamroller
         public Color defaultColor1;
         public Color defaultColor2;
 
+        private Oribitable _orbitable;
         public Oribitable orbitable
         {
             get
@@ -116,6 +118,7 @@ namespace Steamroller
                 if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
                 {
                     orbiting = true;
+                    orbitTotal = 0.0f;
                 }
             }
             
@@ -129,6 +132,9 @@ namespace Steamroller
 
                 orbitAngle = ( ( speed * Time.deltaTime ) / ( 2 * orbitRadius * Mathf.PI ) ) * orbitSide * 360.0f;
                 transform.RotateAround( orbitable.transform.position, Vector3.forward, orbitAngle );
+
+                orbitTotal += orbitAngle;
+                orbits = ( (int)orbitTotal / 360 );
             }
             else
             {

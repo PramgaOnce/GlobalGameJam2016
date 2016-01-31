@@ -48,7 +48,7 @@ namespace Steamroller
                 var _movement = _ship.GetComponent<GenericMovement>();
                 if ( _movement.orbiting )
                 {
-                    _movement.speed = Mathf.Lerp( _movement.speed, falloff.Evaluate( Mathf.Clamp( _movement.orbitRadius / distance, 0.0f, 1.0f ) ) * speed, time * Time.deltaTime );
+                    _movement.speed = Mathf.Lerp( _movement.speed, falloff.Evaluate( Mathf.Clamp( _movement.orbitRadius / distance, 0.0f, 1.0f ) ) * speed * SpeedManager.GetSpeed(), time * Time.deltaTime );
                 }
             }
         }
