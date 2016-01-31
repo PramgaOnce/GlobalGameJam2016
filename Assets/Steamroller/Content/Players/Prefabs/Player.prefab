@@ -42,8 +42,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 446600}
   - 114: {fileID: 11425308}
-  - 114: {fileID: 11408722}
   - 114: {fileID: 11494834}
+  - 114: {fileID: 11408722}
+  - 114: {fileID: 11493782}
   - 114: {fileID: 11480610}
   - 114: {fileID: 11493410}
   m_Layer: 0
@@ -235,13 +236,26 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!114 &11494834
+--- !u!114 &11493782
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182162}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0952eee85501c884a9d56cf942fff1a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviours:
+  - {fileID: 11494834}
+--- !u!114 &11494834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182162}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc0450b262e6d724ba542a12b24a8d68, type: 3}
   m_Name: 
@@ -253,7 +267,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: behaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: behaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11494834}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182162}
