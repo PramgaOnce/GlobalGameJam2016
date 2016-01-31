@@ -59,8 +59,10 @@ namespace Steamroller.Characters
             }
             set
             {
-                if (_orbitable)
+                if ( _orbitable )
                 {
+                    orbitable.DetachShip( ship );
+
                     MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
                     mesh_renderer.material.SetFloat("_PulseSpeed", 0.0f);
                     mesh_renderer.material.SetColor("_Color1", defaultColor1);
@@ -72,30 +74,24 @@ namespace Steamroller.Characters
 
                 if (_orbitable)
                 {
+                    orbitable.AttachShip( ship );
+
                     MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
-                     mesh_renderer.material.SetColor("_Color1",color1);
-                     mesh_renderer.material.SetColor("_Color2", color2);
-
-                  
-
+                    mesh_renderer.material.SetColor("_Color1",color1);
+                    mesh_renderer.material.SetColor("_Color2", color2);
                     mesh_renderer.material.SetFloat("_PulseSpeed", pulseValue);
-                  
-                  
                 }
 
             }
         }
         
-
-        protected override void Start()
+        protected override void OnEnable()
         {
             ship = GetComponent<Ship>();
 
             orbit = true;
             FindOrbitable();
             FindOrbitPoint();
-
-           
         }
 
         protected override void Update()
@@ -110,7 +106,6 @@ namespace Steamroller.Characters
                 if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
                 {
                     orbiting = true;
-                    orbitable.AttachShip( ship );
                 }
             }
             
@@ -138,10 +133,6 @@ namespace Steamroller.Characters
             {
                 orbit = false;
                 orbiting = false;
-                if ( orbitable )
-                {
-                    orbitable.DetachShip( GetComponent<Ship>() );
-                }
             }
 
             if (InputManager.GetReleased(ActionType.Orbit) )
