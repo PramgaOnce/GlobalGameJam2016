@@ -1,9 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using Steamroller.Characters;
-using Steamroller.Objects;
-
-namespace Steamroller.Obstacles 
+﻿namespace Steamroller 
 {
     public class Planet : Oribitable
     {

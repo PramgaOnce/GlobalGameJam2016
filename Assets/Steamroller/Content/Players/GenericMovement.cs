@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using Steamroller.Objects;
 
-namespace Steamroller.Characters
+namespace Steamroller
 {   
     public class GenericMovement : CachedMonoBehaviour
     {
@@ -29,7 +28,32 @@ namespace Steamroller.Characters
         [HideInInspector]
         public bool orbiting = false;
         [HideInInspector]
-        public bool orbit = false;
+        [SerializeField]
+        private bool _orbit = false;
+        public bool orbit
+        {
+            get
+            {
+                return _orbit;
+            }
+            set
+            {
+                if ( orbit != value )
+                {
+                    _orbit = value;
+                    
+                    if ( orbit )
+                    {
+                        FindOrbitPoint();
+                    }
+                    else
+                    {
+                        orbiting = false;
+                    }
+                }
+            }
+        }
+
         [HideInInspector]
         private float orbitAngle;
         private Oribitable _orbitable;
@@ -46,7 +70,6 @@ namespace Steamroller.Characters
         public float pulseValue;
         public Color color1;
         public Color color2;
-
 
         public Color defaultColor1;
         public Color defaultColor2;
@@ -81,7 +104,6 @@ namespace Steamroller.Characters
                     mesh_renderer.material.SetColor("_Color2", color2);
                     mesh_renderer.material.SetFloat("_PulseSpeed", pulseValue);
                 }
-
             }
         }
         
@@ -97,8 +119,6 @@ namespace Steamroller.Characters
         protected override void Update()
         {
             FindOrbitable();
-
-            HandleInput();
 
             if ( orbitable && orbit && !orbiting )
             {
@@ -124,21 +144,6 @@ namespace Steamroller.Characters
             {
                 // Simply move forward
                 transform.Translate( Vector3.up * speed * Time.deltaTime, Space.Self );
-            }
-        }
-
-        private void HandleInput()
-        {
-            if ( InputManager.GetPressed( ActionType.Orbit ) )
-            {
-                orbit = false;
-                orbiting = false;
-            }
-
-            if (InputManager.GetReleased(ActionType.Orbit) )
-            {
-                orbit = true;
-                FindOrbitPoint();
             }
         }
 
@@ -175,7 +180,7 @@ namespace Steamroller.Characters
             }
         }
 
-        private void FindOrbitPoint()
+        public void FindOrbitPoint()
         {
             if ( orbitable == null )
             {

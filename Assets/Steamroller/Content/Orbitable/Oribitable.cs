@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using Steamroller.Characters;
 
-namespace Steamroller.Objects
+namespace Steamroller
 {
     public class Oribitable : CachedMonoBehaviour
     {
