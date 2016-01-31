@@ -96,13 +96,13 @@ namespace Steamroller
             base.LateUpdate();
         }
         
-        public void CompletedRotation(Player player,Oribitable orbitable)
+        public void CompletedRotation(Ship ship,Oribitable orbitable)
         {
             
-            if (player != PlayerManager.GetCurrentPlayer())
-            {
-                return;
-            }
+            //if (player != PlayerManager.GetCurrentPlayer())
+            //{
+            //    return;
+            //}
 
             if (orbitable != simonList[simonIndex])
             {
@@ -110,6 +110,14 @@ namespace Steamroller
             }
             simonIndex++;
             PlayerManager.GetCurrentPlayer().score += 1;
+            if (PlayerManager.GetPlayerNumber() == 0)
+            {
+                Player1Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
+            else
+            {
+                Player2Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
 
             if (simonIndex == simonList.Count)
             {
@@ -124,6 +132,14 @@ namespace Steamroller
         {
             //add to the players score
             PlayerManager.GetCurrentPlayer().score += 5;
+            if (PlayerManager.GetPlayerNumber() == 0 )
+            {
+                Player1Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
+            else
+            {
+                Player2Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
             //tell the next player it is there turn
             PlayerManager.SetNextPlayer();
             simonIndex = 0;
@@ -157,7 +173,7 @@ namespace Steamroller
 	        {
                 if (_index != 0)
                 {
-                    _orbitable.SetCoreColor(CoreColor);
+                    simonList[_index - 1].SetCoreColor(DefaultCoreColor);
                 }
 
                  //change The colors on the orbitable
