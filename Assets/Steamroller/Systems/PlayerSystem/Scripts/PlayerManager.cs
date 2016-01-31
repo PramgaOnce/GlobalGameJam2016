@@ -8,12 +8,7 @@ namespace Steamroller
         public Player[] players;
         public Player currentPlayer;
 
-        public static Player GetCurrentPlayer()
-        {
-            return instance.currentPlayer;
-        }
-
-        public static Player SetNextPlayer()
+        public static int GetPlayerNumber()
         {
             if ( instance.currentPlayer != null )
             {
@@ -22,11 +17,26 @@ namespace Steamroller
                     var _player = instance.players[ _index ];
                     if ( _player == instance.currentPlayer )
                     {
-                        _index += 1;
-                        instance.currentPlayer = instance.players[ _index.Wrap( instance.players.Length ) ];
-                        break;
+                        return _index;
                     }
                 }
+            }
+
+            return -1;
+        }
+
+        public static Player GetCurrentPlayer()
+        {
+            return instance.currentPlayer;
+        }
+
+        public static Player SetNextPlayer()
+        {
+            var _playNumber = GetPlayerNumber();
+            if ( _playNumber != -1 )
+            {
+                _playNumber += 1;
+                instance.currentPlayer = instance.players[ _playNumber.Wrap( instance.players.Length ) ];
             }
 
             return GetCurrentPlayer();

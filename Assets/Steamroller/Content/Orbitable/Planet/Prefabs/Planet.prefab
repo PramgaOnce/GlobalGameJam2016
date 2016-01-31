@@ -214,11 +214,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  color1: {r: 1, g: 0, b: 0, a: 1}
-  color2: {r: 0.97794116, g: 0.6859473, b: 0.057525948, a: 1}
-  defaultColor1: {r: 0.9852941, g: 0.07969292, b: 0.84789234, a: 1}
-  defaultColor2: {r: 0.09007351, g: 0.81004053, b: 0.875, a: 1}
-  pulseValue: 5
+  coreRenderers:
+  - {fileID: 2399628}
+  outlineRenderers:
+  - {fileID: 2373070}
+  attachedColor: {r: 1, g: 0, b: 0, a: 0}
+  dettachedColor: {r: 0.403, g: 0, b: 0, a: 0}
 --- !u!114 &11462658
 MonoBehaviour:
   m_ObjectHideFlags: 1
