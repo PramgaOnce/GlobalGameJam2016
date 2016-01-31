@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Steamroller.Objects;
-using Steamroller.Extensions;
 
 namespace Steamroller.Characters
 {   
@@ -8,31 +7,49 @@ namespace Steamroller.Characters
     {
         public bool debug;
 
+        [HideInInspector]
+        public Ship ship;
+
+        [HideInInspector]
         public float speed;
 
+        [HideInInspector]
         public Vector3 selfPoint;
-        
+
+        [HideInInspector]
         public float orbitRadius;
+        [HideInInspector]
         public Vector3 orbitPoint;
+        [HideInInspector]
         public float orbitDistance;
+        [HideInInspector]
         public float orbitThreshold;
+        [HideInInspector]
         public float orbitSide = 1.0f;
+        [HideInInspector]
         public bool orbiting = false;
+        [HideInInspector]
         public bool orbit = false;
 
+        [HideInInspector]
         private float orbitAngle;
 
+        [HideInInspector]
         public Oribitable orbitable;
 
+        [HideInInspector]
         public Vector3 orbitablePoint;
+        [HideInInspector]
         public Vector3 orbitableVector;
+        [HideInInspector]
         public float orbitableDistance;
+        [HideInInspector]
         public float orbitableAngle;
-
-        private Vector3 position;
         
         protected override void Start()
         {
+            ship = GetComponent<Ship>();
+
             orbit = true;
             FindOrbitable();
             FindOrbitPoint();
@@ -50,11 +67,18 @@ namespace Steamroller.Characters
                 if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
                 {
                     orbiting = true;
+                    orbitable.AttachShip( ship );
                 }
             }
             
             if ( orbiting )
             {
+                // Adjust position to orbit radius if needed
+                if ( Vector3.Distance( orbitable.transform.position, transform.position ) != orbitRadius )
+                {
+                    transform.position = orbitable.transform.position + ( ( transform.position - orbitable.transform.position ).normalized * orbitRadius );
+                }
+
                 orbitAngle = ( ( speed * Time.deltaTime ) / ( 2 * orbitRadius * Mathf.PI ) ) * orbitSide * 360.0f;
                 transform.RotateAround( orbitable.transform.position, Vector3.forward, orbitAngle );
             }
@@ -71,6 +95,10 @@ namespace Steamroller.Characters
             {
                 orbit = false;
                 orbiting = false;
+                if ( orbitable )
+                {
+                    orbitable.DetachShip( GetComponent<Ship>() );
+                }
             }
 
             if (InputManager.GetReleased(ActionType.Orbit) )
