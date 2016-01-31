@@ -84,13 +84,6 @@ namespace Steamroller
         public float orbitableDistance;
         [HideInInspector]
         public float orbitableAngle;
-        private Vector3 position;
-        public float pulseValue;
-        public Color color1;
-        public Color color2;
-
-        public Color defaultColor1;
-        public Color defaultColor2;
 
         private Oribitable _orbitable;
         public Oribitable orbitable
