@@ -102,7 +102,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3f6ec6987c0d6294687e0a921030f6a0, type: 2}
+  - {fileID: 2100000, guid: a50b4aa2c5aeb1d488093fefc20b85c3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -164,6 +164,8 @@ MonoBehaviour:
   orbitSide: 1
   orbiting: 0
   _orbit: 0
+  orbitTotal: 0
+  orbits: 0
   orbitablePoint: {x: 0, y: 0, z: 0}
   orbitableVector: {x: 0, y: 0, z: 0}
   orbitableDistance: 0

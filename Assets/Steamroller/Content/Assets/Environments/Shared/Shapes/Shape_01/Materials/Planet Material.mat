@@ -93,6 +93,18 @@ Material:
         second: 0.5
       data:
         first:
+          name: _PulseSpeed
+        second: 0
+      data:
+        first:
+          name: _ColorIntensity
+        second: 0.5
+      data:
+        first:
+          name: _Metallic
+        second: 0
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -125,18 +137,6 @@ Material:
         second: 0
       data:
         first:
-          name: _Metallic
-        second: 0
-      data:
-        first:
-          name: _PulseSpeed
-        second: 0
-      data:
-        first:
-          name: _ColorIntensity
-        second: 1
-      data:
-        first:
           name: _node_497
         second: 0.1
       data:
@@ -155,8 +155,8 @@ Material:
       data:
         first:
           name: _Color1
-        second: {r: 1, g: 0, b: 0.6000004, a: 1}
+        second: {r: 0.09668895, g: 0.2794118, b: 0.024653988, a: 1}
       data:
         first:
           name: _Color2
-        second: {r: 0.78892, g: 0.2509191, b: 0.875, a: 1}
+        second: {r: 0.3602941, g: 0.34056202, b: 0.074178204, a: 1}
