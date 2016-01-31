@@ -9,7 +9,8 @@ namespace Steamroller
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         public int StartNumber;
-       
+        public int roundCount;
+        private int currentRound;
 
         List<Oribitable> orbitableList;
         List<Oribitable> simonList;
@@ -25,6 +26,7 @@ namespace Steamroller
 
         public UnityEngine.UI.Text Player1Text;
         public UnityEngine.UI.Text Player2Text;
+        public UnityEngine.UI.Text WinnerText;
 
         int simonIndex = 0;
 
@@ -99,7 +101,7 @@ namespace Steamroller
         public void CompletedRotation(Ship ship,Oribitable orbitable)
         {
 
-            if (PlayerManager.GetPlayer(ship) != PlayerManager.GetCurrentPlayer())
+            if (PlayerManager.GetPlayer(ship) != PlayerManager.GetCurrentPlayer() && false)
             {
                 return;
             }
@@ -155,17 +157,14 @@ namespace Steamroller
             } while (_toAdd == simonList[simonList.Count - 1 ]);
 
             simonList.Add(_toAdd);
-           
+
+            RoundEnded();
+
         }
         
         IEnumerator DisplayOnStart()
         {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-            foreach (var item in players)
-            {
-                item.SetActive(false);
-            }
+            DespawnPlayers();
 
             int _index = 0;
 
@@ -187,23 +186,64 @@ namespace Steamroller
                  _orbitable.SetCoreColor(DefaultCoreColor);
              }
 
-            //enable the normal running of the game
-             foreach (var item in players)
-             {
-
-                 item.SetActive(true);
-             }
+             SpawnPlayers();
         }
 
         public void DespawnPlayers()
         {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+            foreach (var item in players)
+            {
+                item.SetActive(false);
+            }
         }
 
         public void SpawnPlayers()
         {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (var item in players)
+            {
+                item.SetActive(true);
+            }
+        }
+
+
+        public  void PlayerDied(Player player)
+        {
+            if (player == PlayerManager.GetCurrentPlayer())
+            {
+                RoundEnded();
+            }
+        }
+
+        public void RoundEnded()
+        {
+            currentRound++;
+            if (roundCount + roundCount < currentRound)
+            {
+                GameOver();   
+            }
+            Respawn();
+        }
+
+        public void GameOver()
+        {
+            DespawnPlayers();
+            WinnerText.gameObject.SetActive(true);
 
         }
 
+
+        public void Respawn()
+        {
+            DespawnPlayers();
+            StartCoroutine(DisplayOnStart());
+            foreach (var item in PlayerManager.instance.players)
+            {
+                //respawn the player
+            }
+        }
     } 
 }
