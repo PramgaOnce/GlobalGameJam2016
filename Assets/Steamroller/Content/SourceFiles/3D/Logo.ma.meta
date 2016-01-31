@@ -1,15 +1,28 @@
 fileFormatVersion: 2
-guid: 83403c52eacdaa6499045955b659bdfa
-timeCreated: 1454182981
+guid: 35d9133bb8cd1b043b467c74b8ba26a8
+timeCreated: 1454253658
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Shape_04
+    100000: curve1
+    100002: curve2
+    100004: extrudedSurface1
+    100006: //RootNode
+    100008: Ship_01
+    100010: Ship_01 1
+    400000: curve1
+    400002: curve2
+    400004: extrudedSurface1
+    400006: //RootNode
+    400008: Ship_01
+    400010: Ship_01 1
+    2300000: extrudedSurface1
+    2300002: Ship_01 1
+    3300000: extrudedSurface1
+    3300002: Ship_01 1
+    4300000: Ship_01
+    4300002: extrudedSurface1
     9500000: //RootNode
   materials:
     importMaterials: 1

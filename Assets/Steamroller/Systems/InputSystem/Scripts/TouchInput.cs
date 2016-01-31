@@ -6,7 +6,7 @@ namespace Steamroller
     public class TouchInput : MonoBehaviour
     {
         public int playerId = 0;
-        private Player player;
+        private Rewired.Player player;
 
         public Rect rect;
         public TouchButton button;
