@@ -293,6 +293,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   disc: {fileID: 417964}
+  discSize: 100
   coreRenderers:
   - {fileID: 2369156}
   outlineRenderers:
@@ -306,7 +307,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: discSize
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 198000}
