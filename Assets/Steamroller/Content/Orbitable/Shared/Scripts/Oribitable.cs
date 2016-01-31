@@ -10,33 +10,20 @@ namespace Steamroller
         public float distance = 5.0f;
         public float time = 1.0f;
         public AnimationCurve falloff = AnimationCurve.EaseInOut( 0.0f, 1.0f, 1.0f, 0.0f );
-        public Color color1;
-        public Color color2;
-        public Color defaultColor1;
-        public Color defaultColor2;
-        public float pulseValue;
 
-        private MeshRenderer _meshRenderer;
-        private new MeshRenderer meshRenderer
-        {
-            get
-            {
-                if ( _meshRenderer == null )
-                {
-                    _meshRenderer = GetComponentInChildren<MeshRenderer>();
-                }
+        public MeshRenderer[] coreRenderers;
+        public MeshRenderer[] outlineRenderers;
 
-                return _meshRenderer;
-            }
-        }
+        public Color attachedColor;
+        public Color dettachedColor;
+
         protected List<Ship> ships = new List<Ship>();
 
         protected override void Awake()
         {
             base.Awake();
-            meshRenderer.material.SetFloat("_PulseSpeed", 1.0f);
-            meshRenderer.material.SetColor("_Color1", defaultColor1);
-            meshRenderer.material.SetColor("_Color2", defaultColor2);
+            
+            SetOutlineColor( ships.Count == 0 ? dettachedColor : attachedColor );
         }
 
         protected override void Update()
@@ -72,9 +59,7 @@ namespace Steamroller
 
             ships.Add( ship );
 
-            meshRenderer.material.SetFloat("_PulseSpeed", pulseValue);
-            meshRenderer.material.SetColor("_Color1", color1);
-            meshRenderer.material.SetColor("_Color2", color2);
+            SetOutlineColor( attachedColor );
         }
 
         public void DetachShip( Ship ship )
@@ -86,9 +71,26 @@ namespace Steamroller
 
             ships.Remove( ship );
 
-            meshRenderer.material.SetFloat("_PulseSpeed", 1.0f);
-            meshRenderer.material.SetColor("_Color1", defaultColor1);
-            meshRenderer.material.SetColor("_Color2", defaultColor2);
+            if ( ships.Count == 0 )
+            {
+                SetOutlineColor( dettachedColor );
+            }
+        }
+
+        public void SetCoreColor( Color color )
+        {
+            foreach ( var _renderer in coreRenderers )
+            {
+                _renderer.material.color = color;
+            }
+        }
+
+        public void SetOutlineColor( Color color )
+        {
+            foreach ( var _renderer in outlineRenderers )
+            {
+                _renderer.material.color = color;
+            }
         }
     }
 }
