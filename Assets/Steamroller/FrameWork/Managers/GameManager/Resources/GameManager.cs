@@ -17,13 +17,11 @@ namespace Steamroller
         //used for the intial display of the pattern
         public float displayTimer;
 
-        public Color displayColor1;
-        public Color displayColor2;
-        public float pulseValue;
+        public Color CoreColor;
 
 
-        public Color DefaultColor1;
-        public Color DefaultColor2;
+        public Color DefaultCoreColor;
+        
 
         public UnityEngine.UI.Text Player1Text;
         public UnityEngine.UI.Text Player2Text;
@@ -159,36 +157,18 @@ namespace Steamroller
 	        {
                 if (_index != 0)
                 {
-                    MeshRenderer[] _mr = simonList[_index - 1].GetComponentsInChildren<MeshRenderer>();
-                    foreach (var _r in _mr)
-                    {
-                        _r.material.SetColor("_Color1", DefaultColor1);
-                        _r.material.SetColor("_Color2", DefaultColor2);
-                        _r.material.SetFloat("_PulseSpeed", 0.0f);
-                    }
+                    _orbitable.SetCoreColor(CoreColor);
                 }
 
                  //change The colors on the orbitable
-                foreach (var item in _orbitable.GetComponentsInChildren<MeshRenderer>())
-                {
-                    item.material.SetColor("_Color1",displayColor1);
-                    item.material.SetColor("_Color2",displayColor2);
-                    item.material.SetFloat("_PulseSpeed", pulseValue);
-                    
-                }
+                _orbitable.SetCoreColor(CoreColor);
                 _index++;
 		        yield return new WaitForSeconds(displayTimer);
 	        }
 
              foreach (var _orbitable in simonList)
              {
-                 foreach (var item in _orbitable.GetComponentsInChildren<MeshRenderer>())
-                 {
-                     item.material.SetColor("_Color1", DefaultColor1);
-                     item.material.SetColor("_Color2", DefaultColor2);
-                     item.material.SetFloat("_PulseSpeed", 0.0f);
-                 }
-
+                 _orbitable.SetCoreColor(DefaultCoreColor);
              }
 
             //enable the normal running of the game
