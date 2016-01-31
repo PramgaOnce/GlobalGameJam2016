@@ -98,11 +98,11 @@ namespace Steamroller
         
         public void CompletedRotation(Ship ship,Oribitable orbitable)
         {
-            
-            //if (player != PlayerManager.GetCurrentPlayer())
-            //{
-            //    return;
-            //}
+
+            if (PlayerManager.GetPlayer(ship) != PlayerManager.GetCurrentPlayer())
+            {
+                return;
+            }
 
             if (orbitable != simonList[simonIndex])
             {
