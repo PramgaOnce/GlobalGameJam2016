@@ -34,7 +34,7 @@ Shader "Shader Forge/Examples/Refraction" {
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
             #pragma multi_compile_fwdbase_fullshadows
-            #pragma exclude_renderers gles xbox360 ps3 
+            #pragma exclude_renderers d3d9 d3d11 opengl gles3 metal d3d11_9x xbox360 ps3 ps4 psp2 
             #pragma target 3.0
             uniform sampler2D _GrabTexture;
             uniform float _RefractionIntensity;
@@ -185,7 +185,7 @@ Shader "Shader Forge/Examples/Refraction" {
             #include "UnityPBSLighting.cginc"
             #include "UnityStandardBRDF.cginc"
             #pragma multi_compile_fwdadd_fullshadows
-            #pragma exclude_renderers gles xbox360 ps3 
+            #pragma exclude_renderers d3d9 d3d11 opengl gles3 metal d3d11_9x xbox360 ps3 ps4 psp2 
             #pragma target 3.0
             uniform sampler2D _GrabTexture;
             uniform float _RefractionIntensity;

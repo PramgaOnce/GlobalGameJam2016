@@ -7,7 +7,7 @@ namespace Steamroller
     public class InputManager : SingletonMonoBehaviour<InputManager>
     {
         public int playerId = 0;
-        private Player player;
+        private Rewired.Player player;
 
         protected override void Awake()
         {
