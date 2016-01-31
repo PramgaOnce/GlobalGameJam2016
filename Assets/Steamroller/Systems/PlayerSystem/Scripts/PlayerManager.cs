@@ -8,6 +8,19 @@ namespace Steamroller
         public Player[] players;
         public Player currentPlayer;
 
+        public static Player GetPlayer( Ship ship )
+        {
+            foreach ( var _player in instance.players )
+            {
+                if ( _player.ship == ship )
+                {
+                    return _player;
+                }
+            }
+
+            return null;
+        }
+
         public static int GetPlayerNumber()
         {
             if ( instance.currentPlayer != null )

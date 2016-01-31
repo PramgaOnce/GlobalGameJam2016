@@ -9,6 +9,7 @@ namespace Steamroller
         public string name;
 
         public Ship ship;
+        public Oribitable oribitable;
 
         public Color coreColor;
         public Color outlineColor;
