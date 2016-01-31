@@ -225,7 +225,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5508
+      value: 0.68
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 830b5844c2b09fe49b16d53f930ca98d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -565,8 +565,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -26.945013}
-  m_SizeDelta: {x: 0, y: -139.09003}
+  m_AnchoredPosition: {x: 0, y: -9.245014}
+  m_SizeDelta: {x: 0, y: -174.49004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1248642719
 MonoBehaviour:
@@ -653,8 +653,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -19.939993}
-  m_SizeDelta: {x: 0, y: -39.880016}
+  m_AnchoredPosition: {x: 0, y: -59.249992}
+  m_SizeDelta: {x: 0, y: -118.500015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281379238
 MonoBehaviour:
@@ -1002,11 +1002,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5909
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.2371
+      value: -5.8989
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1030,15 +1030,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.5264881
+      value: 1.0237929
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.5264877
+      value: 1.0237924
       objectReference: {fileID: 0}
     - target: {fileID: 417356, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.5264877
+      value: 1.0237924
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71a36653e12640b4aaf9af52732c57de, type: 2}
