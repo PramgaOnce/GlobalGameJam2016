@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Ship_01
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 0201fa7e3dbed1e4c86bd7fbb346071c, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -127,6 +127,10 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _Offset
+        second: 5.65
     m_Colors:
       data:
         first:
@@ -135,4 +139,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0.9338235, g: 0.4057302, b: 0, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0.7764707, g: 0.2862745, b: 0.2862745, a: 1}

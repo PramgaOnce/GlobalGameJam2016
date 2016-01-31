@@ -102,7 +102,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3f6ec6987c0d6294687e0a921030f6a0, type: 2}
+  - {fileID: 2100000, guid: a50b4aa2c5aeb1d488093fefc20b85c3, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182162}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24f66cf4944dc1f48b90454129d3b13d, type: 3}
   m_Name: 
@@ -164,6 +164,8 @@ MonoBehaviour:
   orbitSide: 1
   orbiting: 0
   _orbit: 0
+  orbitTotal: 0
+  orbits: 0
   orbitablePoint: {x: 0, y: 0, z: 0}
   orbitableVector: {x: 0, y: 0, z: 0}
   orbitableDistance: 0
@@ -228,8 +230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
+  m_SendInterval: 0.033333335
+  m_SyncRotationAxis: 3
   m_RotationSyncCompression: 0
   m_SyncSpin: 0
   m_MovementTheshold: 0.001
@@ -249,6 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   behaviours:
   - {fileID: 11494834}
+  - {fileID: 11408722}
 --- !u!114 &11494834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,12 +273,20 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: behaviours.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: behaviours.Array.data[0]
       value: 
       objectReference: {fileID: 11494834}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SendInterval
+      value: 0.033333335
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 182162}

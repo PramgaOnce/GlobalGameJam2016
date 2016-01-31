@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Steamroller/Content/Assets/Environments/Trails/DistortionTrails/Materials/New Material.mat.meta
 guid: 605b7b676b01a444b9527df2bd17b799
 timeCreated: 1454219580
+=======
+guid: 7dff054e35b10c945ad91fd3aaf478dc
+timeCreated: 1454172836
+>>>>>>> a9c28f996e72e1abe2eb9a8cd799f8f1e5249b1e:Assets/Steamroller/Content/Environments/BlackHole/Rings/Ring_01/Materials/Ring_01.mat.meta
 licenseType: Pro
 NativeFormatImporter:
   userData: 
