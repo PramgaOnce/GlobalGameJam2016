@@ -1,7 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Steamroller\Content\Environments\BlackHole\Rings\Ring_01\Shaders\Ring_01.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Steamroller\Content\Environments\Borders\Border_01\Shaders\Borders.shader">
     <Files>
+      <File FileName="Assets\Steamroller\Content\Environments\Borders\Border_01\Shaders\Borders.shader" Line="1" Column="1" />
       <File FileName="Assets\Steamroller\Content\Environments\BlackHole\Rings\Ring_01\Shaders\Ring_01.shader" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
