@@ -121,43 +121,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c25d525396ee5d4bab381b6a8217657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 0}
-  _animator: {fileID: 0}
-  _audio: {fileID: 0}
-  _camera: {fileID: 0}
-  _capsuleCollider: {fileID: 0}
-  _collider: {fileID: 0}
-  _collider2D: {fileID: 0}
-  _constantForce: {fileID: 0}
-  _gameObject: {fileID: 0}
-  _guiText: {fileID: 0}
-  _guiTexture: {fileID: 0}
-  _hingeJoint: {fileID: 0}
-  _light: {fileID: 0}
-  _meshFilter: {fileID: 0}
-  _meshRenderer: {fileID: 0}
-  _networkView: {fileID: 0}
-  _particleEmitter: {fileID: 0}
-  _particleSystem: {fileID: 0}
-  _renderer: {fileID: 0}
-  _rigidbody: {fileID: 0}
-  _rigidbody2D: {fileID: 0}
-  _navMeshAgent: {fileID: 0}
-  _navMeshObstacle: {fileID: 0}
-  _tag: 
-  _terrain: {fileID: 0}
-  _transform: {fileID: 0}
-  _name: 
-  ships: []
-  col: {fileID: 0}
-  rotationSpeed: 0
-  speedModifier: 0
-  movement: {fileID: 0}
-  speedStep: 0
-  startspeed: 0
-  rotateStep: 0
-  currentRotation: 0
-  orbit: 0
+  debug: 1
+  speed: 5
+  distance: 5
+  time: 1
+  falloff:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  color1: {r: 1, g: 0, b: 0, a: 1}
+  color2: {r: 0.97794116, g: 0.6859473, b: 0.057525948, a: 1}
+  defaultColor1: {r: 0.9852941, g: 0.07969292, b: 0.84789234, a: 1}
+  defaultColor2: {r: 0.09007351, g: 0.81004053, b: 0.875, a: 1}
+  pulseValue: 5
 --- !u!114 &11487494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,6 +191,74 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: rotSpeedMax
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.r
+      value: 0.97794116
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.g
+      value: 0.6859473
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.b
+      value: 0.057525948
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor1.r
+      value: 0.9852941
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor1.g
+      value: 0.07969292
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor1.b
+      value: 0.84789234
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor2.r
+      value: 0.09007351
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor2.g
+      value: 0.81004053
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor2.b
+      value: 0.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pulseValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: color2.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: defaultColor2.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

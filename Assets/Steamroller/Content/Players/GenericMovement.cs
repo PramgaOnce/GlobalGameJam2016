@@ -62,12 +62,6 @@ namespace Steamroller.Characters
                 if ( _orbitable )
                 {
                     orbitable.DetachShip( ship );
-
-                    MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
-                    mesh_renderer.material.SetFloat("_PulseSpeed", 0.0f);
-                    mesh_renderer.material.SetColor("_Color1", defaultColor1);
-                    mesh_renderer.material.SetColor("_Color2", defaultColor2);
-
                 }
 
                 _orbitable = value;
@@ -76,10 +70,6 @@ namespace Steamroller.Characters
                 {
                     orbitable.AttachShip( ship );
 
-                    MeshRenderer mesh_renderer = _orbitable.GetComponentInChildren<MeshRenderer>();
-                    mesh_renderer.material.SetColor("_Color1",color1);
-                    mesh_renderer.material.SetColor("_Color2", color2);
-                    mesh_renderer.material.SetFloat("_PulseSpeed", pulseValue);
                 }
 
             }

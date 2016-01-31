@@ -11,12 +11,21 @@ namespace Steamroller.Objects
         public float distance = 5.0f;
         public float time = 1.0f;
         public AnimationCurve falloff = AnimationCurve.EaseInOut( 0.0f, 1.0f, 1.0f, 0.0f );
-        
-        protected List<Ship> ships;
+        public Color color1;
+        public Color color2;
+        public Color defaultColor1;
+        public Color defaultColor2;
+        public float pulseValue;
+        private MeshRenderer Mmmrenderer;
+        private List<Ship> ships;
 
         protected override void Awake()
         {
             base.Awake();
+            Mmmrenderer = GetComponentInChildren<MeshRenderer>();
+            Mmmrenderer.material.SetFloat("_PulseSpeed", 1.0f);
+            Mmmrenderer.material.SetColor("_Color1", defaultColor1);
+            Mmmrenderer.material.SetColor("_Color2", defaultColor2);
 
             ships = new List<Ship>();
         }
@@ -52,6 +61,10 @@ namespace Steamroller.Objects
                 return;
             }
 
+
+            Mmmrenderer.material.SetFloat("_PulseSpeed", pulseValue);
+            Mmmrenderer.material.SetColor("_Color1", color1);
+            Mmmrenderer.material.SetColor("_Color2", color2);
             ships.Add( ship );
         }
 
@@ -61,6 +74,10 @@ namespace Steamroller.Objects
             {
                 return;
             }
+
+            Mmmrenderer.material.SetFloat("_PulseSpeed", 1.0f);
+            Mmmrenderer.material.SetColor("_Color1", defaultColor1);
+            Mmmrenderer.material.SetColor("_Color2", defaultColor2);
 
             ships.Remove( ship );
         }
