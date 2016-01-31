@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 7e19cda0724fbac4cae2bd00582bed34
+timeCreated: 1454272380
+licenseType: Pro
+ShaderImporter:
+  defaultTextures:
+  - _Ray: {fileID: 2800000, guid: d700c63c555fe274ba06f5d0ab9cf942, type: 3}
+  - _Distortion_copy: {fileID: 2800000, guid: 122c88158539dd14894def088a246365, type: 3}
+  - _Ray_copy: {fileID: 2800000, guid: d700c63c555fe274ba06f5d0ab9cf942, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
