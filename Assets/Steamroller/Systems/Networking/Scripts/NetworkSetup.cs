@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine.Networking;
 
-public class NetworkSetup : NetworkBehaviour
+namespace Steamroller
 {
-    public MonoBehaviour[] behaviours;
-
-	protected void Start()
+    public class NetworkSetup : NetworkBehaviour
     {
-        Debug.Log( "NetworkSetup.Start" );
-        if ( isLocalPlayer )
+        public MonoBehaviour[] behaviours;
+
+	    protected void Start()
         {
-            foreach ( var _behaviour in behaviours )
+            if ( isLocalPlayer )
             {
-                _behaviour.enabled = true;
+                foreach ( var _behaviour in behaviours )
+                {
+                    _behaviour.enabled = true;
+                }
             }
-        }
-	}
+
+
+            PlayerManager.instance.players[ isServer ? 0 : 1 ].ship = GetComponent<Ship>();
+	    }
+    }
 }
