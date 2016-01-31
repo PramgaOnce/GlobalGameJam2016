@@ -15,16 +15,28 @@ namespace Steamroller
         public Color defaultColor1;
         public Color defaultColor2;
         public float pulseValue;
-        private MeshRenderer Mmmrenderer;
+
+        private MeshRenderer _meshRenderer;
+        private new MeshRenderer meshRenderer
+        {
+            get
+            {
+                if ( _meshRenderer == null )
+                {
+                    _meshRenderer = GetComponentInChildren<MeshRenderer>();
+                }
+
+                return _meshRenderer;
+            }
+        }
         private List<Ship> ships = new List<Ship>();
 
         protected override void Awake()
         {
             base.Awake();
-            Mmmrenderer = GetComponentInChildren<MeshRenderer>();
-            Mmmrenderer.material.SetFloat("_PulseSpeed", 1.0f);
-            Mmmrenderer.material.SetColor("_Color1", defaultColor1);
-            Mmmrenderer.material.SetColor("_Color2", defaultColor2);
+            meshRenderer.material.SetFloat("_PulseSpeed", 1.0f);
+            meshRenderer.material.SetColor("_Color1", defaultColor1);
+            meshRenderer.material.SetColor("_Color2", defaultColor2);
         }
 
         protected override void Update()
@@ -58,11 +70,11 @@ namespace Steamroller
                 return;
             }
 
-
-            Mmmrenderer.material.SetFloat("_PulseSpeed", pulseValue);
-            Mmmrenderer.material.SetColor("_Color1", color1);
-            Mmmrenderer.material.SetColor("_Color2", color2);
             ships.Add( ship );
+
+            meshRenderer.material.SetFloat("_PulseSpeed", pulseValue);
+            meshRenderer.material.SetColor("_Color1", color1);
+            meshRenderer.material.SetColor("_Color2", color2);
         }
 
         public void DetachShip( Ship ship )
@@ -72,11 +84,11 @@ namespace Steamroller
                 return;
             }
 
-            Mmmrenderer.material.SetFloat("_PulseSpeed", 1.0f);
-            Mmmrenderer.material.SetColor("_Color1", defaultColor1);
-            Mmmrenderer.material.SetColor("_Color2", defaultColor2);
-
             ships.Remove( ship );
+
+            meshRenderer.material.SetFloat("_PulseSpeed", 1.0f);
+            meshRenderer.material.SetColor("_Color1", defaultColor1);
+            meshRenderer.material.SetColor("_Color2", defaultColor2);
         }
     }
 }
