@@ -43,8 +43,7 @@ GameObject:
   - 4: {fileID: 446600}
   - 114: {fileID: 11425308}
   - 114: {fileID: 11408722}
-  - 114: {fileID: 11430210}
-  - 114: {fileID: 11415084}
+  - 114: {fileID: 11494834}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -71,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.28, y: -3.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 497874}
@@ -161,7 +160,7 @@ MonoBehaviour:
   orbitThreshold: 0.1
   orbitSide: 1
   orbiting: 0
-  orbit: 0
+  _orbit: 0
   orbitablePoint: {x: 0, y: 0, z: 0}
   orbitableVector: {x: 0, y: 0, z: 0}
   orbitableDistance: 0
@@ -171,26 +170,6 @@ MonoBehaviour:
   color2: {r: 0, g: 0.83448267, b: 1, a: 1}
   defaultColor1: {r: 0.9411765, g: 0.10380621, b: 0.6408782, a: 1}
   defaultColor2: {r: 0.9264706, g: 0.6498448, b: 0.054498266, a: 1}
---- !u!114 &11415084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 182162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 1
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &11425308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab423b56934cb040ba29e732e1aa6d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11430210
+--- !u!114 &11494834
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -210,30 +189,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 182162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: 870353891bb340e2b2a9c8707e7419ba, type: 3}
+  m_Script: {fileID: 11500000, guid: dc0450b262e6d724ba542a12b24a8d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 137
-    i1: 141
-    i2: 150
-    i3: 200
-    i4: 81
-    i5: 128
-    i6: 234
-    i7: 132
-    i8: 11
-    i9: 249
-    i10: 8
-    i11: 85
-    i12: 252
-    i13: 216
-    i14: 180
-    i15: 108
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  ship: {fileID: 11425308}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
