@@ -132,6 +132,7 @@ namespace Steamroller
         //when we have compelted the current setup we should 
         public void FinishedSet()
         {
+            SpeedManager.ResetSpeed();
             //add to the players score
             PlayerManager.GetCurrentPlayer().score += 5;
             if (PlayerManager.GetPlayerNumber() == 0 )
