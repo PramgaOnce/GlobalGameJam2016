@@ -9,7 +9,8 @@ namespace Steamroller
     public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         public int StartNumber;
-       
+        public int roundCount;
+        private int currentRound;
 
         List<Oribitable> orbitableList;
         List<Oribitable> simonList;
@@ -25,6 +26,7 @@ namespace Steamroller
 
         public UnityEngine.UI.Text Player1Text;
         public UnityEngine.UI.Text Player2Text;
+        public UnityEngine.UI.Text WinnerText;
 
         int simonIndex = 0;
 
@@ -96,10 +98,10 @@ namespace Steamroller
             base.LateUpdate();
         }
         
-        public void CompletedRotation(Player player,Oribitable orbitable)
+        public void CompletedRotation(Ship ship,Oribitable orbitable)
         {
-            
-            if (player != PlayerManager.GetCurrentPlayer())
+
+            if (PlayerManager.GetPlayer(ship) != PlayerManager.GetCurrentPlayer() && false)
             {
                 return;
             }
@@ -110,6 +112,14 @@ namespace Steamroller
             }
             simonIndex++;
             PlayerManager.GetCurrentPlayer().score += 1;
+            if (PlayerManager.GetPlayerNumber() == 0)
+            {
+                Player1Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
+            else
+            {
+                Player2Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
 
             if (simonIndex == simonList.Count)
             {
@@ -124,6 +134,14 @@ namespace Steamroller
         {
             //add to the players score
             PlayerManager.GetCurrentPlayer().score += 5;
+            if (PlayerManager.GetPlayerNumber() == 0 )
+            {
+                Player1Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
+            else
+            {
+                Player2Text.text = PlayerManager.GetCurrentPlayer().score.ToString();
+            }
             //tell the next player it is there turn
             PlayerManager.SetNextPlayer();
             simonIndex = 0;
@@ -139,17 +157,14 @@ namespace Steamroller
             } while (_toAdd == simonList[simonList.Count - 1 ]);
 
             simonList.Add(_toAdd);
-           
+
+            RoundEnded();
+
         }
         
         IEnumerator DisplayOnStart()
         {
-            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-            foreach (var item in players)
-            {
-                item.SetActive(false);
-            }
+            DespawnPlayers();
 
             int _index = 0;
 
@@ -157,7 +172,7 @@ namespace Steamroller
 	        {
                 if (_index != 0)
                 {
-                    _orbitable.SetCoreColor(CoreColor);
+                    simonList[_index - 1].SetCoreColor(DefaultCoreColor);
                 }
 
                  //change The colors on the orbitable
@@ -171,23 +186,64 @@ namespace Steamroller
                  _orbitable.SetCoreColor(DefaultCoreColor);
              }
 
-            //enable the normal running of the game
-             foreach (var item in players)
-             {
-
-                 item.SetActive(true);
-             }
+             SpawnPlayers();
         }
 
         public void DespawnPlayers()
         {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
+            foreach (var item in players)
+            {
+                item.SetActive(false);
+            }
         }
 
         public void SpawnPlayers()
         {
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+            foreach (var item in players)
+            {
+                item.SetActive(true);
+            }
+        }
+
+
+        public  void PlayerDied(Player player)
+        {
+            if (player == PlayerManager.GetCurrentPlayer())
+            {
+                RoundEnded();
+            }
+        }
+
+        public void RoundEnded()
+        {
+            currentRound++;
+            if (roundCount + roundCount < currentRound)
+            {
+                GameOver();   
+            }
+            Respawn();
+        }
+
+        public void GameOver()
+        {
+            DespawnPlayers();
+            WinnerText.gameObject.SetActive(true);
 
         }
 
+
+        public void Respawn()
+        {
+            DespawnPlayers();
+            StartCoroutine(DisplayOnStart());
+            foreach (var item in PlayerManager.instance.players)
+            {
+                //respawn the player
+            }
+        }
     } 
 }

@@ -7,6 +7,7 @@ namespace Steamroller
     {
         public Player[] players;
         public Player currentPlayer;
+        public Camera cam;
 
         public static Player GetPlayer( Ship ship )
         {
@@ -53,6 +54,30 @@ namespace Steamroller
             }
 
             return GetCurrentPlayer();
+        }
+
+
+        protected override void Update()
+        {
+            base.Update();
+            foreach (var player in players)
+            {
+                bool markForDelete = false;
+                foreach (var rend in player.ship.GetComponentsInChildren<MeshRenderer>())
+                {
+                    if (!rend.isVisible)
+                    {
+                        markForDelete = false;
+                        continue;
+                    }
+                }
+
+                if (markForDelete && !player.ship.GetComponent<GenericMovement>().orbitable)
+                {
+                    GameManager.instance.PlayerDied(player);
+                }
+
+            }
         }
     }
 }
