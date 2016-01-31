@@ -28,8 +28,8 @@ public class GizmosUtils
 	        y = radius * Mathf.Sin( angle );
 			
 			currentPoint.x = x + ( radius * Mathf.Deg2Rad / 2.0f );
-			currentPoint.y = 0.0f;
-			currentPoint.z = y + ( radius * Mathf.Deg2Rad / 2.0f );
+			currentPoint.z = 0.0f;
+			currentPoint.y = y + ( radius * Mathf.Deg2Rad / 2.0f );
 			
 			currentPoint += center;
 			

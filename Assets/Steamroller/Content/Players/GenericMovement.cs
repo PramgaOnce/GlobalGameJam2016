@@ -1,89 +1,221 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Steamroller.Objects;
 
-
-namespace Steamroller.Characters
-{
-    
-    public class GenericMovement : MonoBehaviour
+namespace Steamroller
+{   
+    public class GenericMovement : CachedMonoBehaviour
     {
-        //we dont want to control direction of the force
+        public bool debug;
+
+        [HideInInspector]
+        public Ship ship;
+
+        [HideInInspector]
         public float speed;
-        private bool MoveNormaly;
-        private Oribitable Interactable;
 
-        void Awake()
+        [HideInInspector]
+        public Vector3 selfPoint;
+
+        [HideInInspector]
+        public float orbitRadius;
+        [HideInInspector]
+        public Vector3 orbitPoint;
+        [HideInInspector]
+        public float orbitDistance;
+        [HideInInspector]
+        public float orbitThreshold;
+        [HideInInspector]
+        public float orbitSide = 1.0f;
+        [HideInInspector]
+        public bool orbiting = false;
+        [HideInInspector]
+        [SerializeField]
+        private bool _orbit = false;
+        public bool orbit
         {
-        }
-
-        
-        void Start()
-        {  
-        }
-
-        
-        void Update()
-        {
-          
-
-            float _speedStep = speed * Time.deltaTime;
-            transform.Translate(new Vector3(0.0f, _speedStep, 0.0f), Space.Self);
-        }
-
-
-        void HandleInput()
-        {
-            if (InputManager.GetPressed(ActionType.Orbit))
+            get
             {
-                float closestDist = float.MaxValue;
-
-
-                foreach (var item in GameObject.FindGameObjectsWithTag("Interactable"))
+                return _orbit;
+            }
+            set
+            {
+                if ( orbit != value )
                 {
-                    Vector3 _dist = item.transform.position - transform.position;
-
-                    if (_dist.sqrMagnitude < closestDist)
+                    _orbit = value;
+                    
+                    if ( orbit )
                     {
-                        Interactable = item.GetComponent<Oribitable>();
-                        closestDist = _dist.sqrMagnitude;
+                        FindOrbitPoint();
+                    }
+                    else
+                    {
+                        orbiting = false;
                     }
                 }
+            }
+        }
 
-                if (Interactable == null)
+        [HideInInspector]
+        private float orbitAngle;
+        private Oribitable _orbitable;
+
+        [HideInInspector]
+        public Vector3 orbitablePoint;
+        [HideInInspector]
+        public Vector3 orbitableVector;
+        [HideInInspector]
+        public float orbitableDistance;
+        [HideInInspector]
+        public float orbitableAngle;
+        private Vector3 position;
+        public float pulseValue;
+        public Color color1;
+        public Color color2;
+
+        public Color defaultColor1;
+        public Color defaultColor2;
+
+        public Oribitable orbitable
+        {
+            get
+            {
+                return _orbitable;
+            }
+            set
+            {
+                if ( _orbitable )
+                {
+                    orbitable.DetachShip( ship );
+                }
+
+                _orbitable = value;
+
+                if (_orbitable)
+                {
+                    orbitable.AttachShip( ship );
+
+                }
+            }
+        }
+        
+        protected override void OnEnable()
+        {
+            ship = GetComponent<Ship>();
+
+            orbit = true;
+            FindOrbitable();
+            FindOrbitPoint();
+        }
+
+        protected override void Update()
+        {
+            FindOrbitable();
+
+            if ( orbitable && orbit && !orbiting )
+            {
+                float _distanceToOrbit = ( orbitPoint - transform.position ).sqrMagnitude;
+                if ( _distanceToOrbit < orbitThreshold * orbitThreshold )
+                {
+                    orbiting = true;
+                }
+            }
+            
+            if ( orbiting )
+            {
+                // Adjust position to orbit radius if needed
+                if ( Vector3.Distance( orbitable.transform.position, transform.position ) != orbitRadius )
+                {
+                    transform.position = orbitable.transform.position + ( ( transform.position - orbitable.transform.position ).normalized * orbitRadius );
+                }
+
+                orbitAngle = ( ( speed * Time.deltaTime ) / ( 2 * orbitRadius * Mathf.PI ) ) * orbitSide * 360.0f;
+                transform.RotateAround( orbitable.transform.position, Vector3.forward, orbitAngle );
+            }
+            else
+            {
+                // Simply move forward
+                transform.Translate( Vector3.up * speed * Time.deltaTime, Space.Self );
+            }
+        }
+
+        private void FindOrbitable()
+        {
+            if ( orbitable )
+            {
+                if ( orbiting || orbit )
                 {
                     return;
                 }
-
-
-
             }
-            else if (InputManager.GetState(ActionType.Orbit))
+
+            selfPoint = transform.position;
+
+            orbitable = null;
+
+            float _closestDistance = float.MaxValue;
+            foreach ( var _oribitable in GameObject.FindObjectsOfType<Oribitable>() )
             {
+                var _distance = _oribitable.transform.position - selfPoint;
 
-                Vector3 targetToPlayer = Interactable.transform.position - transform.position;
-                float dist = targetToPlayer.magnitude;
+                //rule out anyting behind me
+                if ( Vector3.Dot( transform.up, _distance ) < 0.0f )
+                {
+                    continue;
+                }
 
-
-                float angle = Vector3.Angle(transform.up, targetToPlayer);
-
-
-                float orbit = Mathf.Sin(angle) * dist;
-
-
-                float distFromPlayer = Mathf.Sqrt((orbit * orbit) - (dist * dist));
-
-                Vector3 intersectionPoint;
-
-                intersectionPoint = transform.TransformPoint(transform.up * distFromPlayer);
-
-
-
+                if ( _distance.sqrMagnitude < _closestDistance )
+                {
+                    orbitable = _oribitable;
+                    _closestDistance = _distance.sqrMagnitude;
+                }
             }
-            else if (InputManager.GetReleased(ActionType.Orbit))
+        }
+
+        public void FindOrbitPoint()
+        {
+            if ( orbitable == null )
             {
-                Interactable = null;
+                return;
             }
+
+            selfPoint = transform.position;
+
+            orbitablePoint = orbitable.transform.position;
+
+            //grab the vector from the orbitable to me
+            orbitableVector = orbitablePoint - selfPoint;
+
+            //get the distance
+            orbitableDistance = orbitableVector.magnitude;
+
+            orbitSide = Vector3.Dot(transform.right, orbitableVector) < 0.0f ? 1.0f : -1.0f;
+
+            //get the angle between the two
+            orbitableAngle = Vector3.Angle(orbitableVector, transform.up);
+
+            orbitRadius = Mathf.Sin(orbitableAngle * Mathf.Deg2Rad) * orbitableDistance;
+
+            orbitDistance = Mathf.Sqrt((orbitableDistance * orbitableDistance) - (orbitRadius * orbitRadius));
+            orbitPoint = transform.TransformPoint(Vector3.up * orbitDistance);
+        }
+      
+        protected void OnDrawGizmos()
+        {
+            if ( !debug )
+            {
+                return;
+            }
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, transform.up);
+
+            Gizmos.color = Color.yellow;
+
+	        Gizmos.DrawLine(selfPoint, orbitablePoint);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(selfPoint, orbitPoint);
+            Gizmos.color = Color.yellow;
+            GizmosUtils.DrawCircle(orbitablePoint, orbitRadius, 24);
+            Gizmos.DrawSphere(orbitPoint, 0.25f);
         }
     } 
 }
