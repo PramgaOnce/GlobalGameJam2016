@@ -1,7 +1,7 @@
 // Shader created with Shader Forge v1.26 
 // Shader Forge (c) Neat Corporation / Joachim Holmer - http://www.acegikmo.com/shaderforge/
 // Note: Manually altering this data may prevent you from opening it in Shader Forge
-/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-4081-OUT,emission-4081-OUT,clip-4511-B;n:type:ShaderForge.SFN_Tex2d,id:4511,x:32006,y:32937,ptovrint:False,ptlb:Texture,ptin:_Texture,varname:node_4511,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:d9958350d1414ba4e9dc8e7b4f0f004c,ntxv:0,isnm:False;n:type:ShaderForge.SFN_Multiply,id:566,x:32213,y:32703,varname:node_566,prsc:2|A-1962-OUT,B-4511-B;n:type:ShaderForge.SFN_Color,id:1244,x:32252,y:32463,ptovrint:False,ptlb:Color,ptin:_Color,varname:node_1244,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.3570502,c2:0.5108563,c3:0.9338235,c4:1;n:type:ShaderForge.SFN_Multiply,id:4081,x:32440,y:32543,varname:node_4081,prsc:2|A-1244-RGB,B-566-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1962,x:31964,y:32737,ptovrint:False,ptlb:Value,ptin:_Value,varname:node_1962,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;proporder:4511-1244-1962;pass:END;sub:END;*/
+/*SF_DATA;ver:1.26;sub:START;pass:START;ps:flbk:,iptp:0,cusa:False,bamd:0,lico:1,lgpr:1,limd:1,spmd:1,trmd:0,grmd:0,uamb:True,mssp:True,bkdf:False,hqlp:False,rprd:False,enco:False,rmgx:True,rpth:0,vtps:0,hqsc:True,nrmq:1,nrsp:0,vomd:0,spxs:False,tesm:0,olmd:1,culm:0,bsrc:0,bdst:1,dpts:2,wrdp:True,dith:0,rfrpo:True,rfrpn:Refraction,coma:15,ufog:True,aust:True,igpj:False,qofs:0,qpre:2,rntp:3,fgom:False,fgoc:False,fgod:False,fgor:False,fgmd:0,fgcr:0.5,fgcg:0.5,fgcb:0.5,fgca:1,fgde:0.01,fgrn:0,fgrf:300,stcl:False,stva:128,stmr:255,stmw:255,stcp:6,stps:0,stfa:0,stfz:0,ofsf:0,ofsu:0,f2p0:False,fnsp:False,fnfb:False;n:type:ShaderForge.SFN_Final,id:4013,x:32719,y:32712,varname:node_4013,prsc:2|diff-4081-OUT,emission-4081-OUT,clip-4511-B;n:type:ShaderForge.SFN_Tex2d,id:4511,x:32006,y:32937,ptovrint:False,ptlb:Texture,ptin:_Texture,varname:node_4511,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,tex:d9958350d1414ba4e9dc8e7b4f0f004c,ntxv:0,isnm:False|UVIN-6438-UVOUT;n:type:ShaderForge.SFN_Multiply,id:566,x:32213,y:32703,varname:node_566,prsc:2|A-1962-OUT,B-4511-B;n:type:ShaderForge.SFN_Color,id:1244,x:32252,y:32463,ptovrint:False,ptlb:Color,ptin:_Color,varname:node_1244,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,c1:0.3570502,c2:0.5108563,c3:0.9338235,c4:1;n:type:ShaderForge.SFN_Multiply,id:4081,x:32440,y:32543,varname:node_4081,prsc:2|A-1244-RGB,B-566-OUT;n:type:ShaderForge.SFN_ValueProperty,id:1962,x:31964,y:32737,ptovrint:False,ptlb:Value,ptin:_Value,varname:node_1962,prsc:2,glob:False,taghide:False,taghdr:False,tagprd:False,tagnsco:False,tagnrm:False,v1:1;n:type:ShaderForge.SFN_UVTile,id:6438,x:31702,y:32830,varname:node_6438,prsc:2|WDT-2751-OUT,HGT-9606-OUT,TILE-8160-OUT;n:type:ShaderForge.SFN_Vector1,id:2751,x:31517,y:32886,varname:node_2751,prsc:2,v1:0.5;n:type:ShaderForge.SFN_Vector1,id:9606,x:31490,y:32940,varname:node_9606,prsc:2,v1:0.5;n:type:ShaderForge.SFN_Vector1,id:8160,x:31527,y:33034,varname:node_8160,prsc:2,v1:1;proporder:4511-1244-1962;pass:END;sub:END;*/
 
 Shader "Shader Forge/Backgrounds" {
     Properties {
@@ -63,7 +63,13 @@ Shader "Shader Forge/Backgrounds" {
             float4 frag(VertexOutput i) : COLOR {
                 i.normalDir = normalize(i.normalDir);
                 float3 normalDirection = i.normalDir;
-                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(i.uv0, _Texture));
+                float node_2751 = 0.5;
+                float node_8160 = 1.0;
+                float2 node_6438_tc_rcp = float2(1.0,1.0)/float2( node_2751, 0.5 );
+                float node_6438_ty = floor(node_8160 * node_6438_tc_rcp.x);
+                float node_6438_tx = node_8160 - node_2751 * node_6438_ty;
+                float2 node_6438 = (i.uv0 + float2(node_6438_tx, node_6438_ty)) * node_6438_tc_rcp;
+                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(node_6438, _Texture));
                 clip(_Texture_var.b - 0.5);
                 float3 lightDirection = normalize(_WorldSpaceLightPos0.xyz);
                 float3 lightColor = _LightColor0.rgb;
@@ -137,7 +143,13 @@ Shader "Shader Forge/Backgrounds" {
             float4 frag(VertexOutput i) : COLOR {
                 i.normalDir = normalize(i.normalDir);
                 float3 normalDirection = i.normalDir;
-                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(i.uv0, _Texture));
+                float node_2751 = 0.5;
+                float node_8160 = 1.0;
+                float2 node_6438_tc_rcp = float2(1.0,1.0)/float2( node_2751, 0.5 );
+                float node_6438_ty = floor(node_8160 * node_6438_tc_rcp.x);
+                float node_6438_tx = node_8160 - node_2751 * node_6438_ty;
+                float2 node_6438 = (i.uv0 + float2(node_6438_tx, node_6438_ty)) * node_6438_tc_rcp;
+                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(node_6438, _Texture));
                 clip(_Texture_var.b - 0.5);
                 float3 lightDirection = normalize(lerp(_WorldSpaceLightPos0.xyz, _WorldSpaceLightPos0.xyz - i.posWorld.xyz,_WorldSpaceLightPos0.w));
                 float3 lightColor = _LightColor0.rgb;
@@ -193,7 +205,13 @@ Shader "Shader Forge/Backgrounds" {
                 return o;
             }
             float4 frag(VertexOutput i) : COLOR {
-                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(i.uv0, _Texture));
+                float node_2751 = 0.5;
+                float node_8160 = 1.0;
+                float2 node_6438_tc_rcp = float2(1.0,1.0)/float2( node_2751, 0.5 );
+                float node_6438_ty = floor(node_8160 * node_6438_tc_rcp.x);
+                float node_6438_tx = node_8160 - node_2751 * node_6438_ty;
+                float2 node_6438 = (i.uv0 + float2(node_6438_tx, node_6438_ty)) * node_6438_tc_rcp;
+                float4 _Texture_var = tex2D(_Texture,TRANSFORM_TEX(node_6438, _Texture));
                 clip(_Texture_var.b - 0.5);
                 SHADOW_CASTER_FRAGMENT(i)
             }
