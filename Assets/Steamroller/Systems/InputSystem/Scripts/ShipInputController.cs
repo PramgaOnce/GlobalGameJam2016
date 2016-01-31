@@ -31,12 +31,12 @@ namespace Steamroller
 
             if ( InputManager.GetPressed( ActionType.Orbit ) )
             {
-                movement.orbit = false;
+                movement.orbit = true;
             }
 
             if ( InputManager.GetReleased( ActionType.Orbit ) )
             {
-                movement.orbit = true;
+                movement.orbit = false;
             }
         }
     }
