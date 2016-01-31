@@ -69,7 +69,7 @@ namespace Steamroller
             {
                 if (value != _orbits)
                 {
-                    //GameManager.instance.CompletedRotation();
+                    GameManager.instance.CompletedRotation(GetComponent<Ship>(),orbitable);
                 }
 
                 _orbits = value;
