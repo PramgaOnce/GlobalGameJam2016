@@ -25,6 +25,9 @@ namespace Steamroller
         public Color DefaultColor1;
         public Color DefaultColor2;
 
+        public UnityEngine.UI.Text Player1Text;
+        public UnityEngine.UI.Text Player2Text;
+
         int simonIndex = 0;
 
         protected override void Awake()
@@ -97,11 +100,18 @@ namespace Steamroller
         
         public void CompletedRotation(Player player,Oribitable orbitable)
         {
+            
+            if (player != PlayerManager.GetCurrentPlayer())
+            {
+                return;
+            }
+
             if (orbitable != simonList[simonIndex])
             {
                 return;
             }
             simonIndex++;
+            PlayerManager.GetCurrentPlayer().score += 1;
 
             if (simonIndex == simonList.Count)
             {
@@ -114,6 +124,10 @@ namespace Steamroller
         //when we have compelted the current setup we should 
         public void FinishedSet()
         {
+            //add to the players score
+            PlayerManager.GetCurrentPlayer().score += 5;
+            //tell the next player it is there turn
+            PlayerManager.SetNextPlayer();
             simonIndex = 0;
 
             Oribitable _toAdd;
@@ -183,6 +197,16 @@ namespace Steamroller
 
                  item.SetActive(true);
              }
+        }
+
+        public void DespawnPlayers()
+        {
+
+        }
+
+        public void SpawnPlayers()
+        {
+
         }
 
     } 
