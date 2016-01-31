@@ -16,7 +16,7 @@ namespace Steamroller
         public Color defaultColor2;
         public float pulseValue;
         private MeshRenderer Mmmrenderer;
-        private List<Ship> ships;
+        private List<Ship> ships = new List<Ship>();
 
         protected override void Awake()
         {
@@ -25,8 +25,6 @@ namespace Steamroller
             Mmmrenderer.material.SetFloat("_PulseSpeed", 1.0f);
             Mmmrenderer.material.SetColor("_Color1", defaultColor1);
             Mmmrenderer.material.SetColor("_Color2", defaultColor2);
-
-            ships = new List<Ship>();
         }
 
         protected override void Update()
