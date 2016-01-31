@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Ring_01
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 402db3adaa0d2d848beda9732775ec17, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -78,6 +78,34 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Distortion
+        second:
+          m_Texture: {fileID: 2800000, guid: 122c88158539dd14894def088a246365, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ray
+        second:
+          m_Texture: {fileID: 2800000, guid: d700c63c555fe274ba06f5d0ab9cf942, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Distortion_copy
+        second:
+          m_Texture: {fileID: 2800000, guid: 122c88158539dd14894def088a246365, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ray_copy
+        second:
+          m_Texture: {fileID: 2800000, guid: d700c63c555fe274ba06f5d0ab9cf942, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -127,6 +155,18 @@ Material:
         first:
           name: _Mode
         second: 0
+      data:
+        first:
+          name: _PulseSpeed
+        second: 5
+      data:
+        first:
+          name: _SpeedControl
+        second: 0.5199056
+      data:
+        first:
+          name: _ColorIntensity
+        second: 0.4564527
     m_Colors:
       data:
         first:
@@ -136,3 +176,7 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _RayColor
+        second: {r: 0.25, g: 0, b: 1, a: 1}
