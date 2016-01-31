@@ -17,6 +17,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &159324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417964}
+  - 33: {fileID: 3337958}
+  - 23: {fileID: 2303498}
+  m_Layer: 0
+  m_Name: Disc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &168522
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 464796}
+  - {fileID: 417964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &411692
@@ -90,6 +108,18 @@ Transform:
   m_LocalScale: {x: 12.590738, y: 12.590747, z: 12.590749}
   m_Children: []
   m_Father: {fileID: 464796}
+  m_RootOrder: 1
+--- !u!4 &417964
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 411004}
   m_RootOrder: 1
 --- !u!4 &464796
 Transform:
@@ -117,6 +147,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 464796}
   m_RootOrder: 0
+--- !u!23 &2303498
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159324}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 3c5f3de84d0673848b495fe14afbb710, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2354432
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -176,6 +232,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130866}
   m_Mesh: {fileID: 4300000, guid: a8ce70727c46be349ac1583db07503df, type: 3}
+--- !u!33 &3337958
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 159324}
+  m_Mesh: {fileID: 4300000, guid: 3e51c3840ac90ed498497352ee107aad, type: 3}
 --- !u!33 &3348888
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -229,6 +292,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  disc: {fileID: 417964}
   coreRenderers:
   - {fileID: 2369156}
   outlineRenderers:

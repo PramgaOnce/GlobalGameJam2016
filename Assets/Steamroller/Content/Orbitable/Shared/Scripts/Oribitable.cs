@@ -11,6 +11,9 @@ namespace Steamroller
         public float time = 1.0f;
         public AnimationCurve falloff = AnimationCurve.EaseInOut( 0.0f, 1.0f, 1.0f, 0.0f );
 
+        public Transform disc;
+        public float discSize = 350.0f;
+
         public MeshRenderer[] coreRenderers;
         public MeshRenderer[] outlineRenderers;
 
@@ -30,12 +33,25 @@ namespace Steamroller
         {
             base.Update();
 
+            if ( disc )
+            {
+                disc.transform.localScale = Vector3.zero;
+            }
+
             foreach ( var _ship in ships )
             {
                 var _movement = _ship.GetComponent<GenericMovement>();
                 if ( _movement.orbiting )
                 {
                     _movement.speed = Mathf.Lerp( _movement.speed, falloff.Evaluate( Mathf.Clamp( _movement.orbitRadius / distance, 0.0f, 1.0f ) ) * speed * SpeedManager.GetSpeed(), time * Time.deltaTime );
+                }
+
+                if ( _movement.orbit )
+                {
+                    if ( disc )
+                    {
+                        disc.transform.localScale = Vector3.one * _movement.orbitRadius * discSize;
+                    }
                 }
             }
         }
