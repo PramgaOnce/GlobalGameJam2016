@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 35d9133bb8cd1b043b467c74b8ba26a8
-timeCreated: 1454253658
+guid: 59524dd543e26384ea3fb0dda753cee9
+timeCreated: 1454253708
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
@@ -11,18 +11,70 @@ ModelImporter:
     100006: //RootNode
     100008: Ship_01
     100010: Ship_01 1
+    100012: Logo
+    100014: LogoTrail
+    100016: pPlane1
+    100018: pPlane2
+    100020: pPlane3
+    100022: pPlane4
+    100024: pPlane5
+    100026: LogoTrail_01
+    100028: LogoTrail_02
+    100030: Ship_01_Outline
+    100032: LogoTrail_01 1
     400000: curve1
     400002: curve2
     400004: extrudedSurface1
     400006: //RootNode
     400008: Ship_01
     400010: Ship_01 1
+    400012: Logo
+    400014: LogoTrail
+    400016: pPlane1
+    400018: pPlane2
+    400020: pPlane3
+    400022: pPlane4
+    400024: pPlane5
+    400026: LogoTrail_01
+    400028: LogoTrail_02
+    400030: Ship_01_Outline
+    400032: LogoTrail_01 1
     2300000: extrudedSurface1
     2300002: Ship_01 1
+    2300004: LogoTrail
+    2300006: pPlane1
+    2300008: pPlane2
+    2300010: pPlane3
+    2300012: pPlane4
+    2300014: pPlane5
+    2300016: LogoTrail_01
+    2300018: LogoTrail_02
+    2300020: Ship_01_Outline
+    2300022: LogoTrail_01 1
     3300000: extrudedSurface1
     3300002: Ship_01 1
+    3300004: LogoTrail
+    3300006: pPlane1
+    3300008: pPlane2
+    3300010: pPlane3
+    3300012: pPlane4
+    3300014: pPlane5
+    3300016: LogoTrail_01
+    3300018: LogoTrail_02
+    3300020: Ship_01_Outline
+    3300022: LogoTrail_01 1
     4300000: Ship_01
     4300002: extrudedSurface1
+    4300004: pPlane1
+    4300006: pPlane2
+    4300008: pPlane3
+    4300010: pPlane4
+    4300012: pPlane5
+    4300014: LogoTrail
+    4300016: Ship_01_Outline
+    4300018: LogoTrail_01
+    4300020: LogoTrail_02
+    4300022: LogoTrail_01
     9500000: //RootNode
   materials:
     importMaterials: 1

@@ -1,20 +1,37 @@
 fileFormatVersion: 2
-guid: e77b5cbdbf2068f41acd70eefdb3ab24
-timeCreated: 1454207053
+guid: 830b5844c2b09fe49b16d53f930ca98d
+timeCreated: 1454254123
 licenseType: Pro
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Border
-    100002: //RootNode
-    400000: Border
-    400002: //RootNode
-    2300000: Border
-    3300000: Border
-    4300000: Border
+    100000: //RootNode
+    100002: LogoTrail
+    100004: Ship_01
+    100006: Ship_01 1
+    100008: LogoTrail_01
+    100010: Ship_01_Outline
+    400000: //RootNode
+    400002: LogoTrail
+    400004: Ship_01
+    400006: Ship_01 1
+    400008: LogoTrail_01
+    400010: Ship_01_Outline
+    2300000: LogoTrail
+    2300002: Ship_01 1
+    2300004: LogoTrail_01
+    2300006: Ship_01_Outline
+    3300000: LogoTrail
+    3300002: Ship_01 1
+    3300004: LogoTrail_01
+    3300006: Ship_01_Outline
+    4300000: Ship_01
+    4300002: LogoTrail
+    4300004: Ship_01_Outline
+    4300006: LogoTrail_01
     9500000: //RootNode
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -71,7 +88,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
