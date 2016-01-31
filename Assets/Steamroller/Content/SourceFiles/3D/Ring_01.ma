@@ -1,6 +1,6 @@
 //Maya ASCII 2014 scene
-//Name: MeshRing_01.ma
-//Last modified: Sat, Jan 30, 2016 11:34:27 AM
+//Name: Ring_01.ma
+//Last modified: Sun, Jan 31, 2016 11:35:34 AM
 //Codeset: 1252
 requires maya "2014";
 currentUnit -l centimeter -a degree -t film;
@@ -12,7 +12,7 @@ fileInfo "osv" "Microsoft Windows 8 Business Edition, 64-bit  (Build 9200)\n";
 createNode transform -s -n "persp";
 	setAttr ".v" no;
 	setAttr ".t" -type "double3" 1.2032618546902936 5.9307222846992058 0.27829819264680289 ;
-	setAttr ".r" -type "double3" -77.138352729600442 80.199999999998525 0 ;
+	setAttr ".r" -type "double3" -77.138352729600456 80.199999999998525 0 ;
 createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999993;
@@ -70,7 +70,7 @@ createNode mesh -n "Ring_0Shape1" -p "Ring_01";
 	setAttr -k off ".v";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
-	setAttr ".pv" -type "double2" 10.029974758625032 0.50357067584991455 ;
+	setAttr ".pv" -type "double2" 10.029974758625031 0.50357067584991455 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr ".cuvs" -type "string" "map1";
 	setAttr ".dcc" -type "string" "Ambient+Diffuse";
@@ -121,18 +121,19 @@ createNode deleteComponent -n "MeshRing_01_deleteComponent1";
 	setAttr ".dc" -type "componentList" 2 "f[0:19]" "f[40:79]";
 createNode polyTweakUV -n "MeshRing_01_polyTweakUV2";
 	setAttr ".uopa" yes;
-	setAttr -s 42 ".uvtk[0:41]" -type "float2" 1.096137047 0.24918236 2.049111605
-		 0.24918236 3.0020887852 0.24918236 3.95506382 0.24918236 4.90803909 0.24918236 5.86101627
-		 0.24918236 6.81399155 0.24918236 7.76696587 0.24918236 8.719944 0.24918236 9.67292023
-		 0.24918236 10.6258955 0.24918236 11.57887268 0.24918236 12.53184795 0.24918236 13.48482513
-		 0.24918236 14.43780041 0.24918236 15.39077282 0.24918236 16.34374809 0.24918236 17.29672623
-		 0.24918236 18.24970055 0.24918236 19.20267677 0.24918236 20.155653 0.24918236 1.096137047
-		 -0.49204099 2.049111605 -0.49204099 3.0020887852 -0.49204099 3.95506382 -0.49204099
-		 4.90803909 -0.49204099 5.86101627 -0.49204099 6.81399155 -0.49204099 7.76696587 -0.49204099
-		 8.719944 -0.49204099 9.67292023 -0.49204099 10.6258955 -0.49204099 11.57887268 -0.49204099
-		 12.53184795 -0.49204099 13.48482513 -0.49204099 14.43780041 -0.49204099 15.39077282
-		 -0.49204099 16.34374809 -0.49204099 17.29672623 -0.49204099 18.24970055 -0.49204099
-		 19.20267677 -0.49204099 20.155653 -0.49204099;
+	setAttr -s 42 ".uvtk[0:41]" -type "float2" 1.096137404 -0.01485686 2.049111843
+		 -0.01485686 3.002089262 -0.01485686 3.95506382 -0.01485686 4.90803909 -0.01485686
+		 5.86101627 -0.01485686 6.81399155 -0.01485686 7.76696587 -0.01485686 8.719944 -0.01485686
+		 9.67292023 -0.01485686 10.6258955 -0.01485686 11.57887268 -0.01485686 12.53184795
+		 -0.01485686 13.48482513 -0.01485686 14.43780041 -0.01485686 15.39077282 -0.01485686
+		 16.34374809 -0.01485686 17.29672623 -0.01485686 18.24970055 -0.01485686 19.20267677
+		 -0.01485686 20.155653 -0.01485686 1.096137404 -0.22800177 2.049111843 -0.22800177
+		 3.002089262 -0.22800177 3.95506382 -0.22800177 4.90803909 -0.22800177 5.86101627
+		 -0.22800177 6.81399155 -0.22800177 7.76696587 -0.22800177 8.719944 -0.22800177 9.67292023
+		 -0.22800177 10.6258955 -0.22800177 11.57887268 -0.22800177 12.53184795 -0.22800177
+		 13.48482513 -0.22800177 14.43780041 -0.22800177 15.39077282 -0.22800177 16.34374809
+		 -0.22800177 17.29672623 -0.22800177 18.24970055 -0.22800177 19.20267677 -0.22800177
+		 20.155653 -0.22800177;
 createNode checker -n "MeshRing_01_checker1";
 createNode place2dTexture -n "MeshRing_01_place2dTexture1";
 	setAttr ".re" -type "float2" 4 4 ;
@@ -237,6 +238,8 @@ select -ne :hardwareRenderingGlobals;
 select -ne :defaultHardwareRenderGlobals;
 	setAttr ".fn" -type "string" "im";
 	setAttr ".res" -type "string" "ntsc_4d 646 485 1.333";
+select -ne :ikSystem;
+	setAttr -s 4 ".sol";
 connectAttr "MeshRing_01_polyTweakUV2.out" "Ring_0Shape1.i";
 connectAttr "MeshRing_01_polyTweakUV2.uvtk[0]" "Ring_0Shape1.uvst[0].uvtw";
 relationship "link" ":lightLinker1" ":initialShadingGroup.message" ":defaultLightSet.message";
@@ -265,4 +268,4 @@ connectAttr "MeshRing_01_checker1.msg" ":defaultTextureList1.tx" -na;
 connectAttr "MeshRing_01_place2dTexture1.msg" ":defaultRenderUtilityList1.u" -na
 		;
 connectAttr "defaultRenderLayer.msg" ":defaultRenderingList1.r" -na;
-// End of MeshRing_01.ma
+// End of Ring_01.ma
