@@ -263,19 +263,19 @@ TrailRenderer:
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 1543536630
+      rgba: 4278222838
     m_Color[1]:
       serializedVersion: 2
-      rgba: 1543504127
+      rgba: 4278190335
     m_Color[2]:
       serializedVersion: 2
-      rgba: 1526726655
+      rgba: 4294967295
     m_Color[3]:
       serializedVersion: 2
-      rgba: 1560281087
+      rgba: 4294967295
     m_Color[4]:
       serializedVersion: 2
-      rgba: 1476395007
+      rgba: 4294967295
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
 --- !u!114 &11408722
@@ -301,16 +301,10 @@ MonoBehaviour:
   orbiting: 0
   _orbit: 0
   orbitTotal: 0
-  orbits: 0
   orbitablePoint: {x: 0, y: 0, z: 0}
   orbitableVector: {x: 0, y: 0, z: 0}
   orbitableDistance: 0
   orbitableAngle: 0
-  pulseValue: 5
-  color1: {r: 1, g: 0.2509804, b: 1, a: 1}
-  color2: {r: 0, g: 0.83448267, b: 1, a: 1}
-  defaultColor1: {r: 0.9411765, g: 0.10380621, b: 0.6408782, a: 1}
-  defaultColor2: {r: 0.9264706, g: 0.6498448, b: 0.054498266, a: 1}
 --- !u!114 &11425308
 MonoBehaviour:
   m_ObjectHideFlags: 1
